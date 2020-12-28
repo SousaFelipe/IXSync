@@ -32,25 +32,20 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
-        if ($request->isMethod('post')) {
+        $credentials = $request->only('email', 'password');
 
-            $credentials = $request->only('email', 'password');
-
-            if (Auth::attempt($credentials)) {
-                $user = auth()->user();
-                return redirect()->intended($user->getAccessRoute());
-            }
-
-            return redirect()->action(
-                [LoginController::class, 'login'], [
-                    'errors' => [
-                        'credentials' => 'The provided credentials do not match our records.',
-                    ]
-                ]
-            );
+        if (Auth::attempt($credentials)) {
+            $user = auth()->user();
+            return redirect()->intended($user->getAccessRoute());
         }
 
-        return redirect()->route('login');
+        return redirect()->action(
+            [LoginController::class, 'login'], [
+                'errors' => [
+                    'credentials' => 'The provided credentials do not match our records.',
+                ]
+            ]
+        );
     }
 
 
