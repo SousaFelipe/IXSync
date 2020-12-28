@@ -80071,7 +80071,13 @@ var Caixa = /*#__PURE__*/function (_React$Component) {
         attached: "top",
         basic: true,
         secondary: true
-      }));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Form"], {
+        onSubmit: this.doLogout
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+        type: "subbmit",
+        negative: true,
+        fluid: true
+      }, "Sair")));
     }
   }]);
 

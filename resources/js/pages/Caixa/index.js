@@ -2,7 +2,7 @@
 import React from 'react'
 import { Inertia } from '@inertiajs/inertia'
 
-import { Button, Container, Menu, Segment } from 'semantic-ui-react'
+import { Button, Form, Segment } from 'semantic-ui-react'
 
 
 import 'semantic-ui-css/semantic.min.css'
@@ -60,6 +60,9 @@ export default class Caixa extends React.Component {
                 <Segment attached='top' basic secondary >
 
                 </Segment>
+                <Form onSubmit={ this.doLogout }>
+                    <Button type='subbmit' negative fluid>Sair</Button>
+                </Form>
             </Segment>
         )
     }
