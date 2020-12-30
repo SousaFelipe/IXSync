@@ -1,16 +1,13 @@
+
+
 import _ from 'lodash'
-import faker from 'faker'
 import React from 'react'
-import { Search, Grid } from 'semantic-ui-react'
+import { Search, Grid, Input } from 'semantic-ui-react'
 
 
+import config from '../config'
 
-const source = _.times(5, () => ({
-    title: faker.company.companyName(),
-    description: faker.company.catchPhrase(),
-    image: faker.internet.avatar(),
-    price: faker.finance.amount(0, 100, 2, '$'),
-}))
+
 
 const initialState = {
     loading: false,
@@ -42,45 +39,62 @@ function Reducer(state, action) {
 function StandardSearch() {
 
 
+
     const [state, dispatch] = React.useReducer(Reducer, initialState)
     const { loading, results, value } = state
-
     const timeoutRef = React.useRef()
 
+
+
     const handleSearchChange = React.useCallback((e, data) => {
+
         clearTimeout(timeoutRef.current)
         dispatch({ type: 'START_SEARCH', query: data.value })
 
-        timeoutRef.current = setTimeout(() => {
-            if (data.value.length === 0) {
-                dispatch({ type: 'CLEAN_QUERY' })
-                return
-            }
+        fetch(`${ config.ixsHost }/clientes/listar/${ data.value }/razao`)
+            .then(response => response.json())
+            .then(response => {
 
-            const re = new RegExp(_.escapeRegExp(data.value), 'i')
-            const isMatch = (result) => re.test(result.title)
+                console.log(response.clientes)
 
-            dispatch({
-                type: 'FINISH_SEARCH',
-                results: _.filter(source, isMatch),
+                const re = new RegExp(_.escapeRegExp(data.value), 'i')
+                const isMatch = (result) => re.test(result.razao)
+
+                dispatch({
+                    type: 'FINISH_SEARCH',
+                    results: _.filter(response.clientes, isMatch),
+                })
+
             })
-        }, 300)
+
     }, [])
+
+
+
     React.useEffect(() => {
         return () => {
             clearTimeout(timeoutRef.current)
         }
     }, [])
 
+
+
     return (
         <Grid>
             <Grid.Column>
                 <Search
-                    loading={ loading } onResultSelect={(e, data) => dispatch({ type: 'UPDATE_SELECTION', selection: data.result.title }) }
+                    as={Input}
+                    icon='search'
+                    iconPosition='left'
+                    loading={ loading }
+                    // onResultSelect={(e, data) => dispatch({ type: 'UPDATE_SELECTION', selection: data.result.title }) }
                     onSearchChange={ handleSearchChange }
+                    placeholder='Nome ou CPF do cliente...'
                     results={ results }
                     value={ value }
-                    centered
+                    size='huge'
+                    transparent
+                    fluid
                 />
             </Grid.Column>
         </Grid>

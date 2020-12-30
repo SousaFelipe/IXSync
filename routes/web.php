@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [App\Http\Controllers\Controller::class, 'index'])->name('index');
-Route::get('/csrf', [App\Http\Controllers\Controller::class, 'csrf'])->name('csrf');
+Route::get('/auth', [App\Http\Controllers\Controller::class, 'auth'])->name('auth');
 
 
 Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
@@ -29,5 +29,13 @@ Route::prefix('/')->middleware('auth')->group(function () {
     Route::prefix('/operacional')->name('operacional')->group(function () {
         Route::get('/', [App\Http\Controllers\AppController::class, 'operacional']);
     });
+
+});
+
+
+Route::prefix('/clientes')->group(function () {
+
+    Route::get('/buscar/{id_cliente}', [App\Http\Controllers\ClienteController::class, 'buscar']);
+    Route::get('/listar/{vbusca}/{tbusca}', [App\Http\Controllers\ClienteController::class, 'listar']);
 
 });

@@ -79872,6 +79872,62 @@ var config = {
 
 /***/ }),
 
+/***/ "./resources/js/models/User.js":
+/*!*************************************!*\
+  !*** ./resources/js/models/User.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return User; });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var User = /*#__PURE__*/function () {
+  function User(props) {
+    _classCallCheck(this, User);
+
+    this.id = props.id;
+    this.code = props.code;
+    this.name = props.name;
+    this.email = props.email;
+    this.access = props.access;
+  }
+
+  _createClass(User, null, [{
+    key: "getPosition",
+    value: function getPosition(access) {
+      switch (access) {
+        case 'AD':
+          return 'Administrativo';
+
+        case 'CX':
+          return 'Caixa';
+
+        case 'FN':
+          return 'Financeiro';
+
+        case 'OP':
+          return 'Operacional';
+
+        default:
+          return 'Convidado';
+      }
+    }
+  }]);
+
+  return User;
+}();
+
+
+
+/***/ }),
+
 /***/ "./resources/js/pages/Admin/index.js":
 /*!*******************************************!*\
   !*** ./resources/js/pages/Admin/index.js ***!
@@ -79983,7 +80039,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var semantic_ui_css_semantic_min_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(semantic_ui_css_semantic_min_css__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../styles */ "./resources/js/styles/index.js");
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../config */ "./resources/js/config.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils */ "./resources/js/utils.js");
+/* harmony import */ var _models_User__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../models/User */ "./resources/js/models/User.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -80005,12 +80069,44 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
 
 
 
+
+
+
+
+function ListItemHook(elements) {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
+      _useState2 = _slicedToArray(_useState, 2),
+      count = _useState2[0],
+      setCount = _useState2[1];
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, elements.forEach(function (el) {
+    /*#__PURE__*/
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('p', {
+      key: index
+    }, "Elemento ".concat(el));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: function onClick() {
+      return setCount(count + 1);
+    }
+  }, " Clique aqui "));
+}
 
 var Caixa = /*#__PURE__*/function (_React$Component) {
   _inherits(Caixa, _React$Component);
@@ -80024,26 +80120,35 @@ var Caixa = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      csrf_token: ''
+      auth: {
+        user: {},
+        csrf_token: ''
+      }
     };
     _this.doLogout = _this.doLogout.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Caixa, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
+    key: "UNSAFE_componentWillMount",
+    value: function UNSAFE_componentWillMount() {
       var _this2 = this;
 
-      fetch("".concat(_config__WEBPACK_IMPORTED_MODULE_5__["default"].ixsHost, "/csrf")).then(function (response) {
+      fetch("".concat(_config__WEBPACK_IMPORTED_MODULE_5__["default"].ixsHost, "/auth")).then(function (response) {
         return response.json();
       }).then(function (data) {
-        document.querySelector('meta[name="csrf-token"]').setAttribute('content', data.csrf_token);
-
-        _this2.setState({
-          csrf_token: data.csrf_token
+        return _this2.setState({
+          auth: {
+            user: new _models_User__WEBPACK_IMPORTED_MODULE_7__["default"](_objectSpread({}, data.user)),
+            csrf_token: data.csrf_token
+          }
         });
       });
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      document.querySelector('meta[name="csrf-token"]').setAttribute('content', this.state.auth.csrf_token);
     }
   }, {
     key: "doLogout",
@@ -80051,38 +80156,89 @@ var Caixa = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__["Inertia"].post('/logout', {}, {
         headers: {
-          'X-CSRF-TOKEN': this.state.csrf_token
+          'X-CSRF-TOKEN': this.state.auth.csrf_token
         }
       });
     }
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Segment"], {
-        textAlign: "justified",
-        style: {
-          minHeight: '100vh',
-          padding: '0em 1em'
-        },
-        basic: true,
-        secondary: "true",
-        vertical: true
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: _styles__WEBPACK_IMPORTED_MODULE_4__["default"].vh100
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Segment"], {
-        attached: "top",
-        basic: true,
-        secondary: true
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Form"], {
-        onSubmit: this.doLogout
+        style: _styles__WEBPACK_IMPORTED_MODULE_4__["default"].mhXG,
+        clearing: true,
+        basic: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Segment"], {
+        padded: true,
+        floated: "left",
+        compact: true,
+        basic: true
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-        type: "subbmit",
-        negative: true,
+        icon: "sidebar"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Segment"], {
+        as: semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Segment"].Group,
+        textAlign: "right",
+        floated: "right",
+        size: "small",
+        basic: true,
+        horizontal: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Segment"], {
+        basic: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["List"].Item, {
+        floated: "right"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.auth.user.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["List"].Item, {
+        floated: "right"
+      }, _models_User__WEBPACK_IMPORTED_MODULE_7__["default"].getPosition(this.state.auth.user.access))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Segment"], {
+        basic: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Image"], {
+        src: _utils__WEBPACK_IMPORTED_MODULE_6__["default"].asset.avatar(this.state.auth.user.code),
+        size: "mini",
+        verticalAlign: "middle",
+        circular: true
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Segment"], {
+        style: {
+          marginTop: 200,
+          paddingLeft: 200,
+          paddingRight: 200
+        },
+        clearing: true,
+        basic: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Segment"], {
+        clearing: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Input"], {
+        type: "search",
+        icon: "search",
+        iconPosition: "left",
+        size: "huge",
+        placeholder: "Nome ou CPF do cliente...",
+        floated: "left",
+        transparent: true,
         fluid: true
-      }, "Sair")));
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Segment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ListItemHook, {
+        elements: ['Element 1', 'Element 2', 'Element 3']
+      })))));
     }
   }]);
 
   return Caixa;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+/**
+<Form onSubmit={ this.doLogout }>
+    <Button type='subbmit' negative fluid>Sair</Button>
+</Form>
+
+<Image src={ utils.asset.avatar('2dPsQxPM.png') } size='mini' verticalAlign='middle'/>
+
+<Segment.Group clearing basic>
+    <Segment padded='false' clearing>
+        <Input icon='search' type='search' iconPosition='left' size='huge' placeholder='Nome ou CPF do cliente...' transparent fluid/>
+    </Segment>
+    <Segment></Segment>
+</Segment.Group>
+
+*/
+
 
 
 
@@ -80265,6 +80421,43 @@ var Login = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
+/***/ "./resources/js/styles/Search.js":
+/*!***************************************!*\
+  !*** ./resources/js/styles/Search.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var SearchBox = {
+  display: 'flex',
+  position: 'absolute',
+  zIndex: 1,
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  borderRadius: '28px',
+  width: '20rem',
+  height: '64px',
+  backgroundColor: 'white'
+};
+var SearchInput = {
+  height: '44px',
+  border: 'none',
+  borderRadius: '11px',
+  display: 'inline-block',
+  fontSize: '1.1em',
+  outline: 'none'
+};
+var Search = {
+  SearchBox: SearchBox,
+  SearchInput: SearchInput
+};
+/* harmony default export */ __webpack_exports__["default"] = (Search);
+
+/***/ }),
+
 /***/ "./resources/js/styles/index.js":
 /*!**************************************!*\
   !*** ./resources/js/styles/index.js ***!
@@ -80274,6 +80467,8 @@ var Login = /*#__PURE__*/function (_React$Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Search__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Search */ "./resources/js/styles/Search.js");
+
 var styles = {
   /**
    * Dimensions
@@ -80305,6 +80500,32 @@ var styles = {
   pG: {
     padding: 8
   },
+  vw100: {
+    height: '100vw'
+  },
+  vh100: {
+    height: '100vh'
+  },
+  mhS: {
+    marginLeft: 4,
+    marginRight: 4
+  },
+  mhM: {
+    marginLeft: 8,
+    marginRight: 8
+  },
+  mhL: {
+    marginLeft: 12,
+    marginRight: 12
+  },
+  mhG: {
+    marginLeft: 16,
+    marginRight: 16
+  },
+  mhXG: {
+    marginLeft: 18,
+    marginRight: 18
+  },
   mvS: {
     marginTop: 4,
     marginBottom: 4
@@ -80321,18 +80542,47 @@ var styles = {
     marginTop: 16,
     marginBottom: 16
   },
-
-  /**
-   * Elements
-   */
-  cardContent: {
-    paddingTop: 40,
-    paddingBottom: 20,
-    paddingLeft: 20,
-    paddingRight: 20
-  }
+  mvXG: {
+    marginTop: 18,
+    marginBottom: 18
+  },
+  Search: _Search__WEBPACK_IMPORTED_MODULE_0__["default"]
 };
 /* harmony default export */ __webpack_exports__["default"] = (styles);
+
+/***/ }),
+
+/***/ "./resources/js/utils.js":
+/*!*******************************!*\
+  !*** ./resources/js/utils.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./config */ "./resources/js/config.js");
+
+var imgPath = "".concat(_config__WEBPACK_IMPORTED_MODULE_0__["default"].ixsHost, "/storage/img");
+var avatarPath = "".concat(imgPath, "/avatars");
+var defaultAvatar = "".concat(avatarPath, "/undefined.png");
+var asset = {
+  exists: function exists(filename) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('HEAD', filename, false);
+    xhr.send();
+    return !(xhr.status == '404');
+  },
+  avatar: function avatar(filename) {
+    var resource = "".concat(avatarPath, "/").concat(filename, ".png");
+    return asset.exists(resource) ? resource : defaultAvatar;
+  },
+  image: function image(filename) {}
+};
+var utils = {
+  asset: asset
+};
+/* harmony default export */ __webpack_exports__["default"] = (utils);
 
 /***/ }),
 
