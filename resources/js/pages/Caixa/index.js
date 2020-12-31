@@ -88,7 +88,7 @@ export default class Caixa extends React.Component {
         return (
             <List.Item
             key={ cliente.id }
-            style={ styles.selectable, itemStyle }
+            style={ styles.selectable }
             onClick={ selectClientItem } >
 
                 <List.Icon verticalAlign='middle' color={ ((cliente.ativo == 'S') ? 'green' : 'red') } name='user' />

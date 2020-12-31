@@ -80142,7 +80142,7 @@ var Caixa = /*#__PURE__*/function (_React$Component) {
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["List"].Item, {
         key: cliente.id,
-        style: (_styles__WEBPACK_IMPORTED_MODULE_4__["default"].selectable, itemStyle),
+        style: _styles__WEBPACK_IMPORTED_MODULE_4__["default"].selectable,
         onClick: selectClientItem
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["List"].Icon, {
         verticalAlign: "middle",
