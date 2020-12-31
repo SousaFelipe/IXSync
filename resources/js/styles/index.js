@@ -1,12 +1,9 @@
 
 
-import Search from './Search'
-
-
 
 const styles = {
 
-    /**
+    /*
      * Dimensions
      */
     wS: { width: 200 },
@@ -36,7 +33,18 @@ const styles = {
     mvG:  { marginTop: 16, marginBottom: 16 },
     mvXG: { marginTop: 18, marginBottom: 18 },
 
-    Search: Search
+    /*
+     * Misselanious
+     */
+    hiddenOverflow: {
+        whiteSpace:     'nowrap',
+        overflow:       'hidden',
+        textOverflow:   'ellipsis'
+    },
+
+    selectable: {
+        cursor: 'pointer',
+    }
 }
 
 

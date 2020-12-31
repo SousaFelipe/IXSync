@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Inertia } from '@inertiajs/inertia'
 
 
 import {
     Button,
     Container,
+    Grid,
     Image,
     Input,
     List,
@@ -22,27 +23,6 @@ import User from '../../models/User'
 
 
 
-function ListItemHook (elements) {
-
-
-    const [count, setCount] = useState(0)
-
-
-    return (
-
-        <div>
-            {
-                elements.forEach(el => {
-                    React.createElement('p', { key: index }, `Elemento ${ el }`)
-                })
-            }
-            <button onClick={() => setCount(count + 1)}> Clique aqui </button>
-        </div>
-    )
-}
-
-
-
 export default class Caixa extends React.Component {
 
 
@@ -50,13 +30,17 @@ export default class Caixa extends React.Component {
         super(props)
 
         this.state = {
+
             auth: {
                 user: { },
                 csrf_token: ''
-            }
+            },
+
+            clientes: [],
         }
 
         this.doLogout = this.doLogout.bind(this)
+        this.onSearhChange = this.onSearhChange.bind(this)
     }
 
 
@@ -93,6 +77,66 @@ export default class Caixa extends React.Component {
 
 
 
+    createClientElement (cliente) {
+
+        const selectClientItem = (e) => {
+            e.preventDefault()
+
+            console.log(cliente)
+        }
+
+        return (
+            <List.Item
+            key={ cliente.id }
+            style={ styles.selectable, itemStyle }
+            onClick={ selectClientItem } >
+
+                <List.Icon verticalAlign='middle' color={ ((cliente.ativo == 'S') ? 'green' : 'red') } name='user' />
+                <List.Content>
+                    <Grid padded={false} verticalAlign='middle'>
+                        <Grid.Column width={6} style={ styles.hiddenOverflow }> { cliente.razao.toUpperCase() } </Grid.Column>
+                        <Grid.Column width={3} style={ styles.hiddenOverflow }> { cliente.endereco.toUpperCase() } </Grid.Column>
+                        <Grid.Column width={7} style={ styles.hiddenOverflow }> { cliente.complemento.toUpperCase() } </Grid.Column>
+                    </Grid>
+                </List.Content>
+
+            </List.Item>
+        )
+    }
+
+
+
+    showMatchClients (clientes) {
+        if (clientes.length > 0) {
+            return (
+                <Segment>
+                    <List verticalAlign='middle'>{ clientes.map(this.createClientElement) }</List>
+                </Segment>
+            )
+        }
+    }
+
+
+
+    onSearhChange (e) {
+        e.preventDefault()
+
+        let query = e.target.value
+
+        if (query.length >= 3) {
+            fetch(`${ config.ixsHost }/clientes/listar/${ query }/razao`)
+                .then(response => response.json())
+                .then(data => this.setState({
+                    clientes: data.clientes
+                }))
+        }
+        else {
+            this.setState({ clientes: [] })
+        }
+    }
+
+
+
     render () {
         return (
             <div style={ styles.vh100 }>
@@ -103,7 +147,7 @@ export default class Caixa extends React.Component {
                         <Button icon='sidebar' />
                     </Segment>
 
-                    <Segment as={Segment.Group} textAlign='right' floated='right' size='small' basic horizontal>
+                    <Segment as={Segment.Group} textAlign='right' floated='right' size='small' horizontal basic>
                         <Segment basic>
                             <List.Item floated='right'><strong>{ this.state.auth.user.name }</strong></List.Item>
                             <List.Item floated='right'>{ User.getPosition(this.state.auth.user.access) }</List.Item>
@@ -117,13 +161,20 @@ export default class Caixa extends React.Component {
 
                 <Container>
 
-                    <Segment style={{ marginTop: 200, paddingLeft: 200, paddingRight: 200 }} clearing basic>
+                    <Segment style={{ marginTop: 200, paddingLeft: 150, paddingRight: 150 }} clearing basic>
                         <Segment clearing>
-                            <Input type='search' icon='search' iconPosition='left' size='huge' placeholder='Nome ou CPF do cliente...' floated='left' transparent fluid />
+                            <Input
+                                type='search'
+                                icon='search'
+                                size='huge'
+                                iconPosition='left'
+                                placeholder='Nome ou CPF do cliente...'
+                                floated='left'
+                                onChange={ this.onSearhChange }
+                                transparent
+                                fluid />
                         </Segment>
-                        <Segment>
-                            <ListItemHook elements={['Element 1', 'Element 2', 'Element 3']} />
-                        </Segment>
+                        { this.showMatchClients(this.state.clientes) }
                     </Segment>
 
                 </Container>

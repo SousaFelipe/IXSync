@@ -80069,17 +80069,6 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
@@ -80088,25 +80077,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
-
-function ListItemHook(elements) {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
-      _useState2 = _slicedToArray(_useState, 2),
-      count = _useState2[0],
-      setCount = _useState2[1];
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, elements.forEach(function (el) {
-    /*#__PURE__*/
-    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('p', {
-      key: index
-    }, "Elemento ".concat(el));
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    onClick: function onClick() {
-      return setCount(count + 1);
-    }
-  }, " Clique aqui "));
-}
 
 var Caixa = /*#__PURE__*/function (_React$Component) {
   _inherits(Caixa, _React$Component);
@@ -80123,9 +80093,11 @@ var Caixa = /*#__PURE__*/function (_React$Component) {
       auth: {
         user: {},
         csrf_token: ''
-      }
+      },
+      clientes: []
     };
     _this.doLogout = _this.doLogout.bind(_assertThisInitialized(_this));
+    _this.onSearhChange = _this.onSearhChange.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -80161,6 +80133,67 @@ var Caixa = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "createClientElement",
+    value: function createClientElement(cliente) {
+      var selectClientItem = function selectClientItem(e) {
+        e.preventDefault();
+        console.log(cliente);
+      };
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["List"].Item, {
+        key: cliente.id,
+        style: (_styles__WEBPACK_IMPORTED_MODULE_4__["default"].selectable, itemStyle),
+        onClick: selectClientItem
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["List"].Icon, {
+        verticalAlign: "middle",
+        color: cliente.ativo == 'S' ? 'green' : 'red',
+        name: "user"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["List"].Content, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Grid"], {
+        padded: false,
+        verticalAlign: "middle"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Grid"].Column, {
+        width: 6,
+        style: _styles__WEBPACK_IMPORTED_MODULE_4__["default"].hiddenOverflow
+      }, " ", cliente.razao.toUpperCase(), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Grid"].Column, {
+        width: 3,
+        style: _styles__WEBPACK_IMPORTED_MODULE_4__["default"].hiddenOverflow
+      }, " ", cliente.endereco.toUpperCase(), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Grid"].Column, {
+        width: 7,
+        style: _styles__WEBPACK_IMPORTED_MODULE_4__["default"].hiddenOverflow
+      }, " ", cliente.complemento.toUpperCase(), " "))));
+    }
+  }, {
+    key: "showMatchClients",
+    value: function showMatchClients(clientes) {
+      if (clientes.length > 0) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Segment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["List"], {
+          verticalAlign: "middle"
+        }, clientes.map(this.createClientElement)));
+      }
+    }
+  }, {
+    key: "onSearhChange",
+    value: function onSearhChange(e) {
+      var _this3 = this;
+
+      e.preventDefault();
+      var query = e.target.value;
+
+      if (query.length >= 3) {
+        fetch("".concat(_config__WEBPACK_IMPORTED_MODULE_5__["default"].ixsHost, "/clientes/listar/").concat(query, "/razao")).then(function (response) {
+          return response.json();
+        }).then(function (data) {
+          return _this3.setState({
+            clientes: data.clientes
+          });
+        });
+      } else {
+        this.setState({
+          clientes: []
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -80181,8 +80214,8 @@ var Caixa = /*#__PURE__*/function (_React$Component) {
         textAlign: "right",
         floated: "right",
         size: "small",
-        basic: true,
-        horizontal: true
+        horizontal: true,
+        basic: true
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Segment"], {
         basic: true
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["List"].Item, {
@@ -80199,8 +80232,8 @@ var Caixa = /*#__PURE__*/function (_React$Component) {
       })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Segment"], {
         style: {
           marginTop: 200,
-          paddingLeft: 200,
-          paddingRight: 200
+          paddingLeft: 150,
+          paddingRight: 150
         },
         clearing: true,
         basic: true
@@ -80209,15 +80242,14 @@ var Caixa = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Input"], {
         type: "search",
         icon: "search",
-        iconPosition: "left",
         size: "huge",
+        iconPosition: "left",
         placeholder: "Nome ou CPF do cliente...",
         floated: "left",
+        onChange: this.onSearhChange,
         transparent: true,
         fluid: true
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Segment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ListItemHook, {
-        elements: ['Element 1', 'Element 2', 'Element 3']
-      })))));
+      })), this.showMatchClients(this.state.clientes))));
     }
   }]);
 
@@ -80421,43 +80453,6 @@ var Login = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./resources/js/styles/Search.js":
-/*!***************************************!*\
-  !*** ./resources/js/styles/Search.js ***!
-  \***************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var SearchBox = {
-  display: 'flex',
-  position: 'absolute',
-  zIndex: 1,
-  flexDirection: 'row',
-  justifyContent: 'center',
-  alignItems: 'center',
-  borderRadius: '28px',
-  width: '20rem',
-  height: '64px',
-  backgroundColor: 'white'
-};
-var SearchInput = {
-  height: '44px',
-  border: 'none',
-  borderRadius: '11px',
-  display: 'inline-block',
-  fontSize: '1.1em',
-  outline: 'none'
-};
-var Search = {
-  SearchBox: SearchBox,
-  SearchInput: SearchInput
-};
-/* harmony default export */ __webpack_exports__["default"] = (Search);
-
-/***/ }),
-
 /***/ "./resources/js/styles/index.js":
 /*!**************************************!*\
   !*** ./resources/js/styles/index.js ***!
@@ -80467,10 +80462,8 @@ var Search = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Search__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Search */ "./resources/js/styles/Search.js");
-
 var styles = {
-  /**
+  /*
    * Dimensions
    */
   wS: {
@@ -80546,7 +80539,18 @@ var styles = {
     marginTop: 18,
     marginBottom: 18
   },
-  Search: _Search__WEBPACK_IMPORTED_MODULE_0__["default"]
+
+  /*
+   * Misselanious
+   */
+  hiddenOverflow: {
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis'
+  },
+  selectable: {
+    cursor: 'pointer'
+  }
 };
 /* harmony default export */ __webpack_exports__["default"] = (styles);
 
