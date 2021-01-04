@@ -8,7 +8,6 @@ import { Button, Card, Form, Grid, Header } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import styles from '../../styles'
 import config from '../../config'
-import User from '../../models/User'
 
 
 
@@ -20,15 +19,10 @@ export default class Login extends React.Component {
         super (props)
 
         this.state = {
-
             loading: false,
+            csrf_token: '',
             inputEmail: '',
-            inputPassword: '',
-
-            auth: {
-                user: { },
-                csrf_token: ''
-            },
+            inputPassword: ''
         }
 
         this.onEmailChange = this.onEmailChange.bind(this)
@@ -39,21 +33,18 @@ export default class Login extends React.Component {
 
 
 
-    UNSAFE_componentWillMount () {
-        fetch(`${ config.ixsHost }/auth`)
-            .then(response => response.json())
-            .then(data => this.setState({
-                auth: {
-                    user: new User({ ...data.user }),
-                    csrf_token: data.csrf_token
-                }
-            }))
-    }
-
-
-
     componentDidMount () {
-        document.querySelector('meta[name="csrf-token"]').setAttribute('content', this.state.auth.csrf_token)
+
+        fetch(`${ config.ixsHost }/csrf`)
+            .then(response => response.json())
+            .then(data => {
+
+                document.querySelector('meta[name="csrf-token"]').setAttribute('content', data.csrf_token)
+
+                this.setState({
+                    csrf_token: data.csrf_token
+                })
+            })
     }
 
 
@@ -87,7 +78,7 @@ export default class Login extends React.Component {
         Inertia.post(
             '/authenticate',
             { email: email, password: password },
-            { headers: { 'X-CSRF-TOKEN': this.state.auth.csrf_token } }
+            { headers: { 'X-CSRF-TOKEN': this.state.csrf_token } }
         )
     }
 

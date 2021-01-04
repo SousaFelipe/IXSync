@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
@@ -8,7 +8,7 @@ import Caixa from './pages/Caixa'
 
 
 
-class App extends React.Component {
+class App extends Component {
 
 
 

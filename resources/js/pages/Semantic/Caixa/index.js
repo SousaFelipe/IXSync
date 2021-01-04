@@ -46,6 +46,7 @@ export default class Caixa extends React.Component {
 
 
     UNSAFE_componentWillMount () {
+
         fetch(`${ config.ixsHost }/auth`)
             .then(response => response.json())
             .then(data => this.setState({
@@ -115,7 +116,7 @@ export default class Caixa extends React.Component {
             <List.Item
             key={ cliente.id }
             style={ styles.selectable }
-            onClick={ selectClientItem }>
+            onClick={ selectClientItem } >
 
                 <List.Icon verticalAlign='middle' color={ ((cliente.ativo == 'S') ? 'green' : 'red') } name='user' />
                 <List.Content>
