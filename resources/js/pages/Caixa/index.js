@@ -5,10 +5,9 @@ import { Inertia } from '@inertiajs/inertia'
 import {
     Button,
     Container,
-    Grid,
+    List,
     Image,
     Input,
-    List,
     Segment,
 } from 'semantic-ui-react'
 
@@ -20,6 +19,14 @@ import utils  from '../../utils'
 
 
 import User from '../../models/User'
+
+
+import Grid from '../../components/Grid'
+import Columns from '../../components/Grid/Column'
+
+import UL from '../../components/UL'
+import LI from '../../components/LI'
+import Column from '../../components/Grid/Column'
 
 
 
@@ -82,8 +89,7 @@ export default class Caixa extends React.Component {
         let query = e.target.value
 
         let url = utils.url(
-            'clientes/listar/qvalue/qtype',
-            {
+            'clientes/listar/qvalue/qtype', {
                 qvalue: query,
                 qtype: utils.isNumber(query) ? 'cnpj_cpf' : 'razao'
             }
@@ -105,28 +111,25 @@ export default class Caixa extends React.Component {
 
     createClientElement (cliente) {
 
-        const selectClientItem = (e) => {
+        const selectClientItem = e => {
             e.preventDefault()
 
             console.log(cliente)
         }
 
         return (
-            <List.Item
-            key={ cliente.id }
-            style={ styles.selectable }
-            onClick={ selectClientItem }>
+            <LI
+                key={ cliente.id }
+                onClick={ selectClientItem }
+                hoverColor='#EEEEEE'>
 
-                <List.Icon verticalAlign='middle' color={ ((cliente.ativo == 'S') ? 'green' : 'red') } name='user' />
-                <List.Content>
-                    <Grid padded={false} verticalAlign='middle'>
-                        <Grid.Column width={6} style={ styles.hiddenOverflow }> { cliente.razao.toUpperCase() } </Grid.Column>
-                        <Grid.Column width={3} style={ styles.hiddenOverflow }> { cliente.endereco.toUpperCase() } </Grid.Column>
-                        <Grid.Column width={7} style={ styles.hiddenOverflow }> { cliente.complemento.toUpperCase() } </Grid.Column>
-                    </Grid>
-                </List.Content>
+                <Grid columns={3}>
+                    <Column width={3}>{ cliente.razao }</Column>
+                    <Column width={1}>{ cliente.endereco }</Column>
+                    <Column width={5}>{ cliente.complemento }</Column>
+                </Grid>
 
-            </List.Item>
+            </LI>
         )
     }
 
@@ -135,8 +138,8 @@ export default class Caixa extends React.Component {
     showMatchClients (clientes) {
         if (clientes.length > 0) {
             return (
-                <Segment>
-                    <List verticalAlign='middle'>{ clientes.map(this.createClientElement) }</List>
+                <Segment clearing>
+                    <UL>{ clientes.map(this.createClientElement) }</UL>
                 </Segment>
             )
         }

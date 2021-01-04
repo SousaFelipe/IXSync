@@ -10,6 +10,8 @@ import styles from '../../styles'
 import config from '../../config'
 import User from '../../models/User'
 
+import MyGrid from '../../components/Grid'
+
 
 
 export default class Login extends React.Component {

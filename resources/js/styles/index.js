@@ -18,6 +18,10 @@ const styles = {
     pM: { padding: 4 },
     pG: { padding: 8 },
 
+    pvS: { paddingTop: 2, paddingBottom: 2 },
+    pvM: { paddingTop: 4, paddingBottom: 4 },
+    pvG: { paddingTop: 8, paddingBottom: 8 },
+
     vw100: { height: '100vw' },
     vh100: { height: '100vh' },
 
