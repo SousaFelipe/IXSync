@@ -66,18 +66,16 @@ export default class Grid extends Component {
             })
         }
 
-        console.log(props)
+        return props.join(' ')
     }
 
 
 
     render() {
 
-        this.getGridProperties()
-
         return (
             <Gridstyle
-                columns={ this.getGridColumns() }
+                columns={ this.getGridProperties() }
                 rows={ this.getGridRows() }
                 columnGap={ this.props.columnGap }
                 rowGap={ this.props.rowGap }>

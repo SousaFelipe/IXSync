@@ -124,9 +124,9 @@ export default class Caixa extends React.Component {
                 hoverColor='#EEEEEE'>
 
                 <Grid columns={3}>
-                    <Column width={3}>{ cliente.razao }</Column>
-                    <Column width={1}>{ cliente.endereco }</Column>
-                    <Column width={5}>{ cliente.complemento }</Column>
+                    <Column width={4}>{ cliente.razao }</Column>
+                    <Column width={2}>{ cliente.endereco }</Column>
+                    <Column width={6}>{ cliente.complemento }</Column>
                 </Grid>
 
             </LI>

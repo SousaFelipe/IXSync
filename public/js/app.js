@@ -80819,14 +80819,13 @@ var Grid = /*#__PURE__*/function (_Component) {
         });
       }
 
-      console.log(props);
+      return props.join(' ');
     }
   }, {
     key: "render",
     value: function render() {
-      this.getGridProperties();
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        columns: this.getGridColumns(),
+        columns: this.getGridProperties(),
         rows: this.getGridRows(),
         columnGap: this.props.columnGap,
         rowGap: this.props.rowGap
@@ -81397,11 +81396,11 @@ var Caixa = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Grid__WEBPACK_IMPORTED_MODULE_8__["default"], {
         columns: 3
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Grid_Column__WEBPACK_IMPORTED_MODULE_9__["default"], {
-        width: 3
+        width: 4
       }, cliente.razao), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Grid_Column__WEBPACK_IMPORTED_MODULE_9__["default"], {
-        width: 1
+        width: 2
       }, cliente.endereco), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Grid_Column__WEBPACK_IMPORTED_MODULE_9__["default"], {
-        width: 5
+        width: 6
       }, cliente.complemento)));
     }
   }, {
@@ -81872,8 +81871,8 @@ var utils = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\DEV\IXSync\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\DEV\IXSync\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Atendimento Agility\Documents\DEV\IXSync\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Atendimento Agility\Documents\DEV\IXSync\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
