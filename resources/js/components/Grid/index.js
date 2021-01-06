@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import utils from '../../utils'
 
 
 
@@ -10,26 +11,8 @@ export default class Grid extends Component {
 
 
 
-    constructor(props) {
-        super(props)
-
-        this.state = {
-
-            columns: [
-                '0fr', '0fr', '0fr', '0fr', '0fr', '0fr',
-                '0fr', '0fr', '0fr', '0fr', '0fr', '0fr'
-            ],
-
-            rows: [ '0fr' ]
-        }
-    }
-
-
-
-    getGridColumns () {
-        let columns = this.props.columns
-        columns = (columns == undefined) ? 12 : columns
-        return this.getGridCount(columns)
+    constructor (props) {
+        super (props)
     }
 
 
@@ -53,25 +36,35 @@ export default class Grid extends Component {
 
 
 
-    getGridProperties() {
+    getGridContentWidth (width) {
+
+        if (!width || width == undefined || width == null)
+            return 'auto'
+
+        if (utils.isNumber(width))
+            return `${ width }fr`
+
+        return `${ width }-content`
+    }
+
+
+
+    getGridProperties () {
 
         let count = React.Children.count(this.props.children)
         let props = []
 
         if (count > 0) {
-            React.Children.forEach(this.props.children, children => {
-                props.push(
-                    `${ children.props.width ? children.props.width : `1` }fr`
-                )
-            })
+            React.Children.forEach(this.props.children, children => props.push(this.getGridContentWidth(children.props.width)))
+            return props.join(' ')
         }
 
-        return props.join(' ')
+        return 'auto'
     }
 
 
 
-    render() {
+    render () {
 
         return (
             <Gridstyle

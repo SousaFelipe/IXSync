@@ -19,8 +19,11 @@ export default class Column extends Component {
     render() {
         return (
             <Colstyle
-                width={ this.props.width }>
+                width={ this.props.width }
+                overflow={ `${ this.props.overflow }` }>
+
                 { this.props.children }
+
             </Colstyle>
         )
     }

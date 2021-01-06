@@ -80686,7 +80686,8 @@ var Column = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        width: this.props.width
+        width: this.props.width,
+        overflow: "".concat(this.props.overflow)
       }, this.props.children);
     }
   }]);
@@ -80709,7 +80710,7 @@ var Column = /*#__PURE__*/function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n\n"]);
+  var data = _taggedTemplateLiteral(["\n    ", "\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -80721,7 +80722,13 @@ function _templateObject() {
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
-var Colstyle = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div(_templateObject());
+var Colstyle = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div(_templateObject(), function (props) {
+  if (props.overflow) {
+    return "white-space:    nowrap;\n                    overflow:       hidden;\n                    text-overflow:  ellipsis;";
+  }
+
+  return "";
+});
 /* harmony default export */ __webpack_exports__["default"] = (Colstyle);
 
 /***/ }),
@@ -80738,7 +80745,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Grid; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style */ "./resources/js/components/Grid/style.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils */ "./resources/js/utils.js");
+/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style */ "./resources/js/components/Grid/style.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -80764,32 +80772,19 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var Grid = /*#__PURE__*/function (_Component) {
   _inherits(Grid, _Component);
 
   var _super = _createSuper(Grid);
 
   function Grid(props) {
-    var _this;
-
     _classCallCheck(this, Grid);
 
-    _this = _super.call(this, props);
-    _this.state = {
-      columns: ['0fr', '0fr', '0fr', '0fr', '0fr', '0fr', '0fr', '0fr', '0fr', '0fr', '0fr', '0fr'],
-      rows: ['0fr']
-    };
-    return _this;
+    return _super.call(this, props);
   }
 
   _createClass(Grid, [{
-    key: "getGridColumns",
-    value: function getGridColumns() {
-      var columns = this.props.columns;
-      columns = columns == undefined ? 12 : columns;
-      return this.getGridCount(columns);
-    }
-  }, {
     key: "getGridRows",
     value: function getGridRows() {
       var rows = this.props.rows;
@@ -80808,23 +80803,33 @@ var Grid = /*#__PURE__*/function (_Component) {
       return rule;
     }
   }, {
+    key: "getGridContentWidth",
+    value: function getGridContentWidth(width) {
+      if (!width || width == undefined || width == null) return 'auto';
+      if (_utils__WEBPACK_IMPORTED_MODULE_1__["default"].isNumber(width)) return "".concat(width, "fr");
+      return "".concat(width, "-content");
+    }
+  }, {
     key: "getGridProperties",
     value: function getGridProperties() {
+      var _this = this;
+
       var count = react__WEBPACK_IMPORTED_MODULE_0___default.a.Children.count(this.props.children);
       var props = [];
 
       if (count > 0) {
         react__WEBPACK_IMPORTED_MODULE_0___default.a.Children.forEach(this.props.children, function (children) {
-          props.push("".concat(children.props.width ? children.props.width : "1", "fr"));
+          return props.push(_this.getGridContentWidth(children.props.width));
         });
+        return props.join(' ');
       }
 
-      return props.join(' ');
+      return 'auto';
     }
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["default"], {
         columns: this.getGridProperties(),
         rows: this.getGridRows(),
         columnGap: this.props.columnGap,
@@ -81300,7 +81305,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-
 var Caixa = /*#__PURE__*/function (_React$Component) {
   _inherits(Caixa, _React$Component);
 
@@ -81393,15 +81397,19 @@ var Caixa = /*#__PURE__*/function (_React$Component) {
         key: cliente.id,
         onClick: selectClientItem,
         hoverColor: "#EEEEEE"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Grid__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        columns: 3
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Grid_Column__WEBPACK_IMPORTED_MODULE_9__["default"], {
-        width: 4
-      }, cliente.razao), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Grid_Column__WEBPACK_IMPORTED_MODULE_9__["default"], {
-        width: 2
-      }, cliente.endereco), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Grid_Column__WEBPACK_IMPORTED_MODULE_9__["default"], {
-        width: 6
-      }, cliente.complemento)));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Grid__WEBPACK_IMPORTED_MODULE_8__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Grid_Column__WEBPACK_IMPORTED_MODULE_9__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Icon"], {
+        name: "user",
+        color: cliente.ativo == 'S' ? 'green' : 'red'
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Grid_Column__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        width: 4,
+        overflow: true
+      }, cliente.razao.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Grid_Column__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        width: 2,
+        overflow: true
+      }, cliente.endereco.toUpperCase()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Grid_Column__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        width: 6,
+        overflow: true
+      }, cliente.complemento.toUpperCase())));
     }
   }, {
     key: "showMatchClients",
@@ -81415,8 +81423,9 @@ var Caixa = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: _styles__WEBPACK_IMPORTED_MODULE_4__["default"].vh100
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Container"], {
+        style: _styles__WEBPACK_IMPORTED_MODULE_4__["default"].vh100,
+        fluid: true
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Segment"], {
         style: _styles__WEBPACK_IMPORTED_MODULE_4__["default"].mhXG,
         clearing: true,
@@ -81449,11 +81458,6 @@ var Caixa = /*#__PURE__*/function (_React$Component) {
         verticalAlign: "middle",
         circular: true
       })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Segment"], {
-        style: {
-          marginTop: '14%',
-          paddingLeft: 150,
-          paddingRight: 150
-        },
         clearing: true,
         basic: true
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Segment"], {
@@ -81871,8 +81875,8 @@ var utils = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Atendimento Agility\Documents\DEV\IXSync\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Atendimento Agility\Documents\DEV\IXSync\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\DEV\IXSync\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\DEV\IXSync\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

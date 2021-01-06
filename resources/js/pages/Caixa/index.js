@@ -7,6 +7,7 @@ import {
     Container,
     List,
     Image,
+    Icon,
     Input,
     Segment,
 } from 'semantic-ui-react'
@@ -22,11 +23,10 @@ import User from '../../models/User'
 
 
 import Grid from '../../components/Grid'
-import Columns from '../../components/Grid/Column'
+import Column from '../../components/Grid/Column'
 
 import UL from '../../components/UL'
 import LI from '../../components/LI'
-import Column from '../../components/Grid/Column'
 
 
 
@@ -88,12 +88,10 @@ export default class Caixa extends React.Component {
 
         let query = e.target.value
 
-        let url = utils.url(
-            'clientes/listar/qvalue/qtype', {
-                qvalue: query,
-                qtype: utils.isNumber(query) ? 'cnpj_cpf' : 'razao'
-            }
-        )
+        let url = utils.url('clientes/listar/qvalue/qtype', {
+            qvalue: query,
+            qtype: utils.isNumber(query) ? 'cnpj_cpf' : 'razao'
+        })
 
         if (query.length >= 3) {
             fetch(url)
@@ -123,10 +121,13 @@ export default class Caixa extends React.Component {
                 onClick={ selectClientItem }
                 hoverColor='#EEEEEE'>
 
-                <Grid columns={3}>
-                    <Column width={4}>{ cliente.razao }</Column>
-                    <Column width={2}>{ cliente.endereco }</Column>
-                    <Column width={6}>{ cliente.complemento }</Column>
+                <Grid>
+                    <Column>
+                        <Icon name='user' color={ cliente.ativo == 'S' ? 'green' : 'red' }/>
+                    </Column>
+                    <Column width={4} overflow={true}>{ cliente.razao.toUpperCase() }</Column>
+                    <Column width={2} overflow={true}>{ cliente.endereco.toUpperCase() }</Column>
+                    <Column width={6} overflow={true}>{ cliente.complemento.toUpperCase() }</Column>
                 </Grid>
 
             </LI>
@@ -149,7 +150,7 @@ export default class Caixa extends React.Component {
 
     render () {
         return (
-            <div style={ styles.vh100 }>
+            <Container style={ styles.vh100 } fluid>
 
                 <Segment style={ styles.mhXG } clearing basic>
 
@@ -171,7 +172,7 @@ export default class Caixa extends React.Component {
 
                 <Container>
 
-                    <Segment style={{ marginTop: '14%', paddingLeft: 150, paddingRight: 150 }} clearing basic>
+                    <Segment clearing basic>
                         <Segment clearing>
                             <Input
                                 type='search'
@@ -184,12 +185,14 @@ export default class Caixa extends React.Component {
                                 transparent
                                 fluid />
                         </Segment>
+
                         { this.showMatchClients(this.state.clientes) }
+
                     </Segment>
 
                 </Container>
 
-            </div>
+            </Container>
         )
     }
 }
