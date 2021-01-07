@@ -25,6 +25,7 @@ import User from '../../models/User'
 import Grid from '../../components/Grid'
 import Column from '../../components/Grid/Column'
 import FlexContainer from '../../components/FlexContainer'
+import FlexContent from '../../components/FlexContent'
 
 import UL from '../../components/UL'
 import LI from '../../components/LI'
@@ -152,7 +153,12 @@ export default class Caixa extends React.Component {
     render () {
         return (
                 <FlexContainer>
-                    <article></article>
+
+                    <FlexContent />
+                    <FlexContent />
+                    <FlexContent />
+                    <FlexContent />
+
                 </FlexContainer>
         )
     }
