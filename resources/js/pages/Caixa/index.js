@@ -24,6 +24,7 @@ import User from '../../models/User'
 
 import Grid from '../../components/Grid'
 import Column from '../../components/Grid/Column'
+import FlexContainer from '../../components/FlexContainer'
 
 import UL from '../../components/UL'
 import LI from '../../components/LI'
@@ -123,7 +124,7 @@ export default class Caixa extends React.Component {
 
                 <Grid>
                     <Column>
-                        <Icon name='user' color={ cliente.ativo == 'S' ? 'green' : 'red' }/>
+                        <Icon name='user' color={ cliente.ativo == 'S' ? 'green' : 'grey' }/>
                     </Column>
                     <Column width={4} overflow={true}>{ cliente.razao.toUpperCase() }</Column>
                     <Column width={2} overflow={true}>{ cliente.endereco.toUpperCase() }</Column>
@@ -150,9 +151,29 @@ export default class Caixa extends React.Component {
 
     render () {
         return (
-            <Container style={ styles.vh100 } fluid>
+                <FlexContainer>
+                    <article></article>
+                </FlexContainer>
+        )
+    }
+}
 
-                <Segment style={ styles.mhXG } clearing basic>
+/**
+<Form onSubmit={ this.doLogout }>
+    <Button type='subbmit' negative fluid>Sair</Button>
+</Form>
+
+<Image src={ utils.asset.avatar('2dPsQxPM.png') } size='mini' verticalAlign='middle'/>
+
+<Segment.Group clearing basic>
+    <Segment padded='false' clearing>
+        <Input icon='search' type='search' iconPosition='left' size='huge' placeholder='Nome ou CPF do cliente...' transparent fluid/>
+    </Segment>
+    <Segment></Segment>
+</Segment.Group>
+
+
+<Segment style={ styles.mhXG } clearing basic>
 
                     <Segment padded={true} floated='left' compact basic>
                         <Button icon='sidebar' />
@@ -191,24 +212,5 @@ export default class Caixa extends React.Component {
                     </Segment>
 
                 </Container>
-
-            </Container>
-        )
-    }
-}
-
-/**
-<Form onSubmit={ this.doLogout }>
-    <Button type='subbmit' negative fluid>Sair</Button>
-</Form>
-
-<Image src={ utils.asset.avatar('2dPsQxPM.png') } size='mini' verticalAlign='middle'/>
-
-<Segment.Group clearing basic>
-    <Segment padded='false' clearing>
-        <Input icon='search' type='search' iconPosition='left' size='huge' placeholder='Nome ou CPF do cliente...' transparent fluid/>
-    </Segment>
-    <Segment></Segment>
-</Segment.Group>
 
 */
