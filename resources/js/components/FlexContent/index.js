@@ -1,8 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 
 
 import FlexContentStyle from './style'
+
+import Component from '../Component'
 
 
 
@@ -18,8 +20,7 @@ export default class FlexContent extends Component {
 
     render() {
         return (
-            <FlexContentStyle
-                direction={ this.props.direction }>
+            <FlexContentStyle >
 
                 { this.props.children }
 

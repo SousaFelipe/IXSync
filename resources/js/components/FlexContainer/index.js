@@ -1,8 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 
 
 import FlexContainerStyle from './style'
+
+import Component from '../Component'
 
 
 
@@ -19,8 +21,14 @@ export default class FlexContainer extends Component {
     render() {
         return (
             <FlexContainerStyle
-                direction={ this.props.direction }>
+                width={ this.props.width }
+                height={ this.props.height }
+                direction={ this.props.direction }
+                reverse={ this.props.reverse }
+                bgColor={ this.props.bgColor }>
+                
                 { this.props.children }
+
             </FlexContainerStyle>
         )
     }

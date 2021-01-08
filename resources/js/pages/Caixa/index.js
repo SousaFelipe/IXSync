@@ -152,7 +152,7 @@ export default class Caixa extends React.Component {
 
     render () {
         return (
-                <FlexContainer>
+                <FlexContainer dimensions='full'>
 
                     <FlexContent />
                     <FlexContent />
