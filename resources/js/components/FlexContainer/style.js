@@ -2,20 +2,16 @@ import styled from 'styled-components'
 
 
 
-import ComponentStyle from '../Component/style'
+const FlexContainerStyle = styled.section `
+    display:            flex;
+    width:              ${ props => props.width };
+    height:             ${ props => props.height };
+    flex-direction:     ${ props => props.direction };
+    flex-wrap:          ${ props => props.wrap ? props.wrap : `no-wrap` };
+    justify-content:    ${ props => props.justify };
+    align-items:        ${ props => props.align };
 
-
-
-function direction(direction, reverse = false) {
-    let dir = direction ? direction : `row`
-    return ((reverse === true) ? `${ dir }-reverse` : dir)
-}
-
-
-
-const FlexContainerStyle = styled(ComponentStyle) `
-    display:        flex;
-    flex-direction: ${ props => direction(props.direction, props.reverse) };
+    background-color:   ${ props => props.background ? props.background : `white` };
 `
 
 

@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 
 
 import FlexContainerStyle from './style'
 
-import Component from '../Component'
+import utils from '../../utils'
 
 
 
@@ -18,16 +18,29 @@ export default class FlexContainer extends Component {
 
 
 
+    renderChildrens() {
+        const { children } = this.props
+
+        return React.Children.map(children, child => React.cloneElement(child, {
+            aligned: (this.props.align != null && this.props.align != undefined),
+        }))
+    }
+
+
+
     render() {
+
         return (
             <FlexContainerStyle
-                width={ this.props.width }
-                height={ this.props.height }
-                direction={ this.props.direction }
+                width={ utils.component.dimensions(this.props).w }
+                height={ utils.component.dimensions(this.props).h }
+                direction={ utils.component.direction(this.props) }
                 reverse={ this.props.reverse }
-                bgColor={ this.props.bgColor }>
-                
-                { this.props.children }
+                justify={ utils.component.justify(this.props) }
+                align={ utils.component.align(this.props.align) }
+                background={ this.props.background }>
+
+                { this.renderChildrens() }
 
             </FlexContainerStyle>
         )

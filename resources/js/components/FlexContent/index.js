@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 
 
 import FlexContentStyle from './style'
 
-import Component from '../Component'
+import utils from '../../utils'
 
 
 
@@ -19,8 +19,13 @@ export default class FlexContent extends Component {
 
 
     render() {
+
         return (
-            <FlexContentStyle >
+            <FlexContentStyle
+                width={ utils.component.dimensions(this.props).w }
+                height={ utils.component.dimensions(this.props).h }
+                aligned={ this.props.aligned }
+                background={ this.props.background }>
 
                 { this.props.children }
 

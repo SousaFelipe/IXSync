@@ -54,7 +54,7 @@ export default class Caixa extends React.Component {
 
 
 
-    UNSAFE_componentWillMount () {
+    UNSAFE_componentWillMount() {
         fetch(`${ config.ixsHost }/auth`)
             .then(response => response.json())
             .then(data => this.setState({
@@ -67,13 +67,13 @@ export default class Caixa extends React.Component {
 
 
 
-    componentDidMount () {
+    componentDidMount() {
         document.querySelector('meta[name="csrf-token"]').setAttribute('content', this.state.auth.csrf_token)
     }
 
 
 
-    doLogout (e) {
+    doLogout(e) {
         e.preventDefault()
 
         Inertia.post(
@@ -85,7 +85,7 @@ export default class Caixa extends React.Component {
 
 
 
-    onSearhChange (e) {
+    onSearhChange(e) {
         e.preventDefault()
 
         let query = e.target.value
@@ -109,7 +109,7 @@ export default class Caixa extends React.Component {
 
 
 
-    createClientElement (cliente) {
+    createClientElement(cliente) {
 
         const selectClientItem = e => {
             e.preventDefault()
@@ -121,7 +121,7 @@ export default class Caixa extends React.Component {
             <LI
                 key={ cliente.id }
                 onClick={ selectClientItem }
-                hoverColor='#EEEEEE'>
+                hoverColor='#EEE'>
 
                 <Grid>
                     <Column>
@@ -138,7 +138,7 @@ export default class Caixa extends React.Component {
 
 
 
-    showMatchClients (clientes) {
+    showMatchClients(clientes) {
         if (clientes.length > 0) {
             return (
                 <Segment clearing>
@@ -150,14 +150,17 @@ export default class Caixa extends React.Component {
 
 
 
-    render () {
+    render() {
         return (
-                <FlexContainer dimensions='full'>
+                <FlexContainer
+                    dimensions='full'
+                    background='#EEE'
+                    align='strech'>
 
-                    <FlexContent />
-                    <FlexContent />
-                    <FlexContent />
-                    <FlexContent />
+                    <FlexContent width='100px'/>
+                    <FlexContent width='100px'/>
+                    <FlexContent width='100px'/>
+                    <FlexContent width='100px'/>
 
                 </FlexContainer>
         )
