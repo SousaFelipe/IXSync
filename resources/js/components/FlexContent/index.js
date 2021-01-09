@@ -25,6 +25,9 @@ export default class FlexContent extends Component {
                 width={ utils.component.dimensions(this.props).w }
                 height={ utils.component.dimensions(this.props).h }
                 aligned={ this.props.aligned }
+                grow={ this.props.grow }
+                shrink={ this.props.shrink }
+                basis={ this.props.basis }
                 background={ this.props.background }>
 
                 { this.props.children }

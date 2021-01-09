@@ -80818,6 +80818,9 @@ var FlexContent = /*#__PURE__*/function (_Component) {
         width: _utils__WEBPACK_IMPORTED_MODULE_2__["default"].component.dimensions(this.props).w,
         height: _utils__WEBPACK_IMPORTED_MODULE_2__["default"].component.dimensions(this.props).h,
         aligned: this.props.aligned,
+        grow: this.props.grow,
+        shrink: this.props.shrink,
+        basis: this.props.basis,
         background: this.props.background
       }, this.props.children);
     }
@@ -80841,7 +80844,7 @@ var FlexContent = /*#__PURE__*/function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n\n    ", "\n\n    height: ", ";\n\n    background-color:   ", ";\n    -webkit-box-shadow: 0px 2px 8px -1px rgba(0, 0, 0, 0.25);\n    margin:             5px;\n"]);
+  var data = _taggedTemplateLiteral(["\n\n    ", "\n\n    ", "\n\n    flex-grow:          ", ";\n    flex-shrink:        ", ";\n    flex-basis:         ", ";\n\n    background-color:   ", ";\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -80854,9 +80857,15 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 var FlexContentStyle = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].article(_templateObject(), function (props) {
-  return props.aligned === true ? "" : "width: ".concat(props.width ? props.width : "auto", ";");
+  return "width: ".concat(props.width ? props.width : "auto", ";");
 }, function (props) {
-  return props.height ? props.height : "auto";
+  return "height: ".concat(props.height ? props.height : "auto", ";");
+}, function (props) {
+  return props.grow ? props.grow : 0;
+}, function (props) {
+  return props.shrink ? props.shrink : 1;
+}, function (props) {
+  return props.basis ? props.basis : "auto";
 }, function (props) {
   return props.background ? props.background : "white";
 });
@@ -81660,16 +81669,47 @@ var Caixa = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_FlexContainer__WEBPACK_IMPORTED_MODULE_10__["default"], {
         dimensions: "full",
+        direction: "column",
         background: "#EEE",
         align: "strech"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_FlexContent__WEBPACK_IMPORTED_MODULE_11__["default"], {
-        width: "100px"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_FlexContent__WEBPACK_IMPORTED_MODULE_11__["default"], {
-        width: "100px"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_FlexContent__WEBPACK_IMPORTED_MODULE_11__["default"], {
-        width: "100px"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_FlexContent__WEBPACK_IMPORTED_MODULE_11__["default"], {
-        width: "100px"
+        height: "120px"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_FlexContainer__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        height: "100%",
+        justfy: "center",
+        align: "strech"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_FlexContent__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        grow: 1
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Segment"], {
+        padded: true,
+        floated: "left",
+        compact: true,
+        basic: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+        icon: "sidebar"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Segment"], {
+        as: semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Segment"].Group,
+        textAlign: "right",
+        floated: "right",
+        size: "small",
+        horizontal: true,
+        basic: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Segment"], {
+        basic: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["List"].Item, {
+        floated: "right"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.auth.user.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["List"].Item, {
+        floated: "right"
+      }, _models_User__WEBPACK_IMPORTED_MODULE_7__["default"].getPosition(this.state.auth.user.access))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Segment"], {
+        basic: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Image"], {
+        src: _utils__WEBPACK_IMPORTED_MODULE_6__["default"].asset.avatar(this.state.auth.user.code),
+        size: "mini",
+        verticalAlign: "middle",
+        circular: true
+      })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_FlexContent__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        grow: 1,
+        background: "gray"
       }));
     }
   }]);
@@ -81693,43 +81733,43 @@ var Caixa = /*#__PURE__*/function (_React$Component) {
 
 <Segment style={ styles.mhXG } clearing basic>
 
-                    <Segment padded={true} floated='left' compact basic>
-                        <Button icon='sidebar' />
-                    </Segment>
+    <Segment padded={true} floated='left' compact basic>
+        <Button icon='sidebar' />
+    </Segment>
 
-                    <Segment as={Segment.Group} textAlign='right' floated='right' size='small' horizontal basic>
-                        <Segment basic>
-                            <List.Item floated='right'><strong>{ this.state.auth.user.name }</strong></List.Item>
-                            <List.Item floated='right'>{ User.getPosition(this.state.auth.user.access) }</List.Item>
-                        </Segment>
-                        <Segment basic>
-                            <Image src={ utils.asset.avatar(this.state.auth.user.code) } size='mini' verticalAlign='middle' circular/>
-                        </Segment>
-                    </Segment>
+    <Segment as={Segment.Group} textAlign='right' floated='right' size='small' horizontal basic>
+        <Segment basic>
+            <List.Item floated='right'><strong>{ this.state.auth.user.name }</strong></List.Item>
+            <List.Item floated='right'>{ User.getPosition(this.state.auth.user.access) }</List.Item>
+        </Segment>
+        <Segment basic>
+            <Image src={ utils.asset.avatar(this.state.auth.user.code) } size='mini' verticalAlign='middle' circular/>
+        </Segment>
+    </Segment>
 
-                </Segment>
+</Segment>
 
-                <Container>
+<Container>
 
-                    <Segment clearing basic>
-                        <Segment clearing>
-                            <Input
-                                type='search'
-                                icon='search'
-                                size='huge'
-                                iconPosition='left'
-                                placeholder='Nome ou CPF do cliente...'
-                                floated='left'
-                                onChange={ this.onSearhChange }
-                                transparent
-                                fluid />
-                        </Segment>
+    <Segment clearing basic>
+        <Segment clearing>
+            <Input
+                type='search'
+                icon='search'
+                size='huge'
+                iconPosition='left'
+                placeholder='Nome ou CPF do cliente...'
+                floated='left'
+                onChange={ this.onSearhChange }
+                transparent
+                fluid />
+        </Segment>
 
-                        { this.showMatchClients(this.state.clientes) }
+        { this.showMatchClients(this.state.clientes) }
 
-                    </Segment>
+    </Segment>
 
-                </Container>
+</Container>
 
 */
 

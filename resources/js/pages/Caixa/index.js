@@ -154,13 +154,37 @@ export default class Caixa extends React.Component {
         return (
                 <FlexContainer
                     dimensions='full'
+                    direction='column'
                     background='#EEE'
                     align='strech'>
 
-                    <FlexContent width='100px'/>
-                    <FlexContent width='100px'/>
-                    <FlexContent width='100px'/>
-                    <FlexContent width='100px'/>
+                    <FlexContent height='120px' >
+                        <FlexContainer
+                            height='100%'
+                            justfy='center'
+                            align='strech'>
+
+                            <FlexContent grow={1}>
+                                <Segment padded={true} floated='left' compact basic>
+                                    <Button icon='sidebar' />
+                                </Segment>
+                                <Segment as={Segment.Group} textAlign='right' floated='right' size='small' horizontal basic>
+                                    <Segment basic>
+                                        <List.Item floated='right'><strong>{ this.state.auth.user.name }</strong></List.Item>
+                                        <List.Item floated='right'>{ User.getPosition(this.state.auth.user.access) }</List.Item>
+                                    </Segment>
+                                    <Segment basic>
+                                        <Image src={ utils.asset.avatar(this.state.auth.user.code) } size='mini' verticalAlign='middle' circular/>
+                                    </Segment>
+                                </Segment>
+                            </FlexContent>
+
+                        </FlexContainer>
+                    </FlexContent>
+
+                    <FlexContent grow={1} background='gray'>
+
+                    </FlexContent>
 
                 </FlexContainer>
         )
@@ -184,42 +208,42 @@ export default class Caixa extends React.Component {
 
 <Segment style={ styles.mhXG } clearing basic>
 
-                    <Segment padded={true} floated='left' compact basic>
-                        <Button icon='sidebar' />
-                    </Segment>
+    <Segment padded={true} floated='left' compact basic>
+        <Button icon='sidebar' />
+    </Segment>
 
-                    <Segment as={Segment.Group} textAlign='right' floated='right' size='small' horizontal basic>
-                        <Segment basic>
-                            <List.Item floated='right'><strong>{ this.state.auth.user.name }</strong></List.Item>
-                            <List.Item floated='right'>{ User.getPosition(this.state.auth.user.access) }</List.Item>
-                        </Segment>
-                        <Segment basic>
-                            <Image src={ utils.asset.avatar(this.state.auth.user.code) } size='mini' verticalAlign='middle' circular/>
-                        </Segment>
-                    </Segment>
+    <Segment as={Segment.Group} textAlign='right' floated='right' size='small' horizontal basic>
+        <Segment basic>
+            <List.Item floated='right'><strong>{ this.state.auth.user.name }</strong></List.Item>
+            <List.Item floated='right'>{ User.getPosition(this.state.auth.user.access) }</List.Item>
+        </Segment>
+        <Segment basic>
+            <Image src={ utils.asset.avatar(this.state.auth.user.code) } size='mini' verticalAlign='middle' circular/>
+        </Segment>
+    </Segment>
 
-                </Segment>
+</Segment>
 
-                <Container>
+<Container>
 
-                    <Segment clearing basic>
-                        <Segment clearing>
-                            <Input
-                                type='search'
-                                icon='search'
-                                size='huge'
-                                iconPosition='left'
-                                placeholder='Nome ou CPF do cliente...'
-                                floated='left'
-                                onChange={ this.onSearhChange }
-                                transparent
-                                fluid />
-                        </Segment>
+    <Segment clearing basic>
+        <Segment clearing>
+            <Input
+                type='search'
+                icon='search'
+                size='huge'
+                iconPosition='left'
+                placeholder='Nome ou CPF do cliente...'
+                floated='left'
+                onChange={ this.onSearhChange }
+                transparent
+                fluid />
+        </Segment>
 
-                        { this.showMatchClients(this.state.clientes) }
+        { this.showMatchClients(this.state.clientes) }
 
-                    </Segment>
+    </Segment>
 
-                </Container>
+</Container>
 
 */
