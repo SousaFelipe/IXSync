@@ -81677,7 +81677,7 @@ var Caixa = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_FlexContainer__WEBPACK_IMPORTED_MODULE_10__["default"], {
         height: "100%",
         justfy: "center",
-        align: "strech"
+        align: "center"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_FlexContent__WEBPACK_IMPORTED_MODULE_11__["default"], {
         grow: 1
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Segment"], {
@@ -81708,9 +81708,29 @@ var Caixa = /*#__PURE__*/function (_React$Component) {
         verticalAlign: "middle",
         circular: true
       })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_FlexContent__WEBPACK_IMPORTED_MODULE_11__["default"], {
-        grow: 1,
-        background: "gray"
-      }));
+        grow: 1
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_FlexContainer__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        height: "100%",
+        justfy: "center",
+        align: "center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_FlexContent__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        grow: 1
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Segment"], {
+        clearing: true,
+        basic: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Segment"], {
+        clearing: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Input"], {
+        type: "search",
+        icon: "search",
+        size: "huge",
+        iconPosition: "left",
+        placeholder: "Nome ou CPF do cliente...",
+        floated: "left",
+        onChange: this.onSearhChange,
+        transparent: true,
+        fluid: true
+      })), this.showMatchClients(this.state.clientes)))))));
     }
   }]);
 
@@ -81729,47 +81749,6 @@ var Caixa = /*#__PURE__*/function (_React$Component) {
     </Segment>
     <Segment></Segment>
 </Segment.Group>
-
-
-<Segment style={ styles.mhXG } clearing basic>
-
-    <Segment padded={true} floated='left' compact basic>
-        <Button icon='sidebar' />
-    </Segment>
-
-    <Segment as={Segment.Group} textAlign='right' floated='right' size='small' horizontal basic>
-        <Segment basic>
-            <List.Item floated='right'><strong>{ this.state.auth.user.name }</strong></List.Item>
-            <List.Item floated='right'>{ User.getPosition(this.state.auth.user.access) }</List.Item>
-        </Segment>
-        <Segment basic>
-            <Image src={ utils.asset.avatar(this.state.auth.user.code) } size='mini' verticalAlign='middle' circular/>
-        </Segment>
-    </Segment>
-
-</Segment>
-
-<Container>
-
-    <Segment clearing basic>
-        <Segment clearing>
-            <Input
-                type='search'
-                icon='search'
-                size='huge'
-                iconPosition='left'
-                placeholder='Nome ou CPF do cliente...'
-                floated='left'
-                onChange={ this.onSearhChange }
-                transparent
-                fluid />
-        </Segment>
-
-        { this.showMatchClients(this.state.clientes) }
-
-    </Segment>
-
-</Container>
 
 */
 
@@ -82208,8 +82187,8 @@ var utils = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\DEV\IXSync\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\DEV\IXSync\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Atendimento Agility\Documents\DEV\IXSync\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Atendimento Agility\Documents\DEV\IXSync\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

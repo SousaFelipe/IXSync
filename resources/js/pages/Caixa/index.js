@@ -162,7 +162,7 @@ export default class Caixa extends React.Component {
                         <FlexContainer
                             height='100%'
                             justfy='center'
-                            align='strech'>
+                            align='center'>
 
                             <FlexContent grow={1}>
                                 <Segment padded={true} floated='left' compact basic>
@@ -182,8 +182,35 @@ export default class Caixa extends React.Component {
                         </FlexContainer>
                     </FlexContent>
 
-                    <FlexContent grow={1} background='gray'>
+                    <FlexContent grow={1}>
+                        <FlexContainer
+                            height='100%'
+                            justfy='center'
+                            align='center'>
 
+                            <FlexContent grow={1}>
+                                <Container>
+                                    <Segment clearing basic>
+                                        <Segment clearing>
+                                            <Input
+                                                type='search'
+                                                icon='search'
+                                                size='huge'
+                                                iconPosition='left'
+                                                placeholder='Nome ou CPF do cliente...'
+                                                floated='left'
+                                                onChange={ this.onSearhChange }
+                                                transparent
+                                                fluid />
+                                        </Segment>
+
+                                        { this.showMatchClients(this.state.clientes) }
+
+                                    </Segment>
+                                </Container>
+                            </FlexContent>
+
+                        </FlexContainer>
                     </FlexContent>
 
                 </FlexContainer>
@@ -204,46 +231,5 @@ export default class Caixa extends React.Component {
     </Segment>
     <Segment></Segment>
 </Segment.Group>
-
-
-<Segment style={ styles.mhXG } clearing basic>
-
-    <Segment padded={true} floated='left' compact basic>
-        <Button icon='sidebar' />
-    </Segment>
-
-    <Segment as={Segment.Group} textAlign='right' floated='right' size='small' horizontal basic>
-        <Segment basic>
-            <List.Item floated='right'><strong>{ this.state.auth.user.name }</strong></List.Item>
-            <List.Item floated='right'>{ User.getPosition(this.state.auth.user.access) }</List.Item>
-        </Segment>
-        <Segment basic>
-            <Image src={ utils.asset.avatar(this.state.auth.user.code) } size='mini' verticalAlign='middle' circular/>
-        </Segment>
-    </Segment>
-
-</Segment>
-
-<Container>
-
-    <Segment clearing basic>
-        <Segment clearing>
-            <Input
-                type='search'
-                icon='search'
-                size='huge'
-                iconPosition='left'
-                placeholder='Nome ou CPF do cliente...'
-                floated='left'
-                onChange={ this.onSearhChange }
-                transparent
-                fluid />
-        </Segment>
-
-        { this.showMatchClients(this.state.clientes) }
-
-    </Segment>
-
-</Container>
 
 */
