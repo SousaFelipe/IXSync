@@ -22,9 +22,10 @@ export default class FlexContent extends Component {
 
         return (
             <FlexContentStyle
+                responsive={ this.props.responsive }
+                aligned={ this.props.aligned }
                 width={ utils.component.dimensions(this.props).w }
                 height={ utils.component.dimensions(this.props).h }
-                aligned={ this.props.aligned }
                 grow={ this.props.grow }
                 shrink={ this.props.shrink }
                 basis={ this.props.basis }

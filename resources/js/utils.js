@@ -70,7 +70,7 @@ const component = {
 
 
     /**
-     * @param props start, end, around, between
+     * @param props start, end, center, around, between
      */
     justify: (props) => {
         const justify = props.justify
@@ -81,7 +81,9 @@ const component = {
 
         return (justify == 'start' || justify == 'end')
             ? `flex-${ justify }`
-            : `space-${ justify }`
+            : (justify == 'around' || justify == 'between')
+                ? `space-${ justify }`
+                : justify
     },
 
 

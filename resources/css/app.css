@@ -1,0 +1,18 @@
+
+@font-face {
+    font-family:'CloudBold';
+    src: url('/fonts/CloudSans/Cloud-Bold.otf') format('otf');
+    font-style: normal;
+    font-weight: 800;
+}
+
+@font-face {
+    font-family:'CloudLight';
+    src: url('/fonts/CloudSans/Cloud-Light.otf') format('otf');
+    font-style: normal;
+    font-weight: 500;
+}
+
+*, body, html {
+    font-family: CloudBold, Arial, sans-serif;
+}

@@ -4,7 +4,6 @@ import { Inertia } from '@inertiajs/inertia'
 
 import {
     Button,
-    Container,
     List,
     Image,
     Icon,
@@ -14,7 +13,7 @@ import {
 
 
 import 'semantic-ui-css/semantic.min.css'
-import styles from '../../styles'
+import style from './style'
 import config from '../../config'
 import utils  from '../../utils'
 
@@ -45,7 +44,7 @@ export default class Caixa extends React.Component {
                 csrf_token: ''
             },
 
-            clientes: []
+            clientes: [],
         }
 
         this.doLogout = this.doLogout.bind(this)
@@ -158,16 +157,16 @@ export default class Caixa extends React.Component {
                     background='#EEE'
                     align='strech'>
 
-                    <FlexContent height='120px' >
-                        <FlexContainer
-                            height='100%'
-                            justfy='center'
-                            align='center'>
+                    <FlexContent height='100px' >
+                        <FlexContainer height='100%' align='center'>
 
                             <FlexContent grow={1}>
                                 <Segment padded={true} floated='left' compact basic>
                                     <Button icon='sidebar' />
                                 </Segment>
+                            </FlexContent>
+
+                            <FlexContent grow={1}>
                                 <Segment as={Segment.Group} textAlign='right' floated='right' size='small' horizontal basic>
                                     <Segment basic>
                                         <List.Item floated='right'><strong>{ this.state.auth.user.name }</strong></List.Item>
@@ -183,33 +182,25 @@ export default class Caixa extends React.Component {
                     </FlexContent>
 
                     <FlexContent grow={1}>
-                        <FlexContainer
-                            height='100%'
-                            justfy='center'
-                            align='center'>
+                        <FlexContainer height='100%' justify='center' align='center'>
+                            <FlexContent responsive={ style.mainInputSearch }>
 
-                            <FlexContent grow={1}>
-                                <Container>
-                                    <Segment clearing basic>
-                                        <Segment clearing>
-                                            <Input
-                                                type='search'
-                                                icon='search'
-                                                size='huge'
-                                                iconPosition='left'
-                                                placeholder='Nome ou CPF do cliente...'
-                                                floated='left'
-                                                onChange={ this.onSearhChange }
-                                                transparent
-                                                fluid />
-                                        </Segment>
-
-                                        { this.showMatchClients(this.state.clientes) }
-
+                                    <Segment clearing>
+                                        <Input
+                                            type='search'
+                                            icon='search'
+                                            size='huge'
+                                            iconPosition='left'
+                                            placeholder='Nome ou CPF do cliente...'
+                                            floated='left'
+                                            onChange={ this.onSearhChange }
+                                            transparent
+                                            fluid />
                                     </Segment>
-                                </Container>
-                            </FlexContent>
 
+                                    { this.showMatchClients(this.state.clientes) }
+
+                            </FlexContent>
                         </FlexContainer>
                     </FlexContent>
 
