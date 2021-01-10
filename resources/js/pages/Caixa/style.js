@@ -3,6 +3,17 @@
 
 const style = {
 
+    mainLogo: {
+
+        all: {},
+        desktop: {},
+        tablet: {},
+
+        phone: {
+            display: `hidden`
+        }
+    },
+
     mainInputSearch: {
         all: {
             width: `800px`

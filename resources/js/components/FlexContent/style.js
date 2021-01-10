@@ -27,21 +27,24 @@ const FlexContentStyle = styled.div `
     background-color:   ${ props => props.background ? props.background : `white` };
 
 
-    @media(min-width: 1025px) { width: ${ props => props.responsive ? props.responsive.all.width : `auto` }; }
+    @media(min-width: 1025px) { width: ${ props => props.responsive ? props.responsive.all.width ? props.responsive.all.width : `auto` : `auto` }; }
     @media(max-width: 1024px) {
-        width:          ${ props => props.responsive ? props.responsive.desktop.width : `auto` };
-        margin-left:    ${ props => props.responsive ? props.responsive.desktop.horizontalMargin : 0 };
-        margin-right:   ${ props => props.responsive ? props.responsive.desktop.horizontalMargin : 0 };
+        width:          ${ props => props.responsive ? props.responsive.desktop.width ? props.responsive.desktop.width : `auto` : `auto` };
+        margin-left:    ${ props => props.responsive ? props.responsive.desktop.horizontalMargin ? props.responsive.desktop.horizontalMargin : 0 : 0 };
+        margin-right:   ${ props => props.responsive ? props.responsive.desktop.horizontalMargin ? props.responsive.desktop.horizontalMargin : 0 : 0 };
+        display:        ${ props => props.responsive ? props.responsive.desktop.display ? props.responsive.phone.display : `inline` : `inline` };
     }
     @media(max-width: 800px) {
-        width:          ${ props => props.responsive ? props.responsive.tablet.width : `auto` };
-        margin-left:    ${ props => props.responsive ? props.responsive.tablet.horizontalMargin : 0 };
-        margin-right:   ${ props => props.responsive ? props.responsive.tablet.horizontalMargin : 0 };
+        width:          ${ props => props.responsive ? props.responsive.tablet.width ? props.responsive.tablet.width  : `auto` : `auto` };
+        margin-left:    ${ props => props.responsive ? props.responsive.tablet.horizontalMargin ? props.responsive.tablet.horizontalMargin : 0 : 0 };
+        margin-right:   ${ props => props.responsive ? props.responsive.tablet.horizontalMargin ? props.responsive.tablet.horizontalMargin : 0  : 0 };
+        display:        ${ props => props.responsive ? props.responsive.tablet.display ? props.responsive.phone.display : `inline` : `inline` };
     }
     @media(max-width: 548px) {
-        width:          ${ props => props.responsive ? props.responsive.phone.width : `auto` };
-        margin-left:    ${ props => props.responsive ? props.responsive.phone.horizontalMargin : 0 };
-        margin-right:   ${ props => props.responsive ? props.responsive.phone.horizontalMargin : 0 };
+        width:          ${ props => props.responsive ? props.responsive.phone.width ? props.responsive.phone.width  : `auto` : `auto` };
+        margin-left:    ${ props => props.responsive ? props.responsive.phone.horizontalMargin ? props.responsive.phone.horizontalMargin : 0 : 0 };
+        margin-right:   ${ props => props.responsive ? props.responsive.phone.horizontalMargin ? props.responsive.phone.horizontalMargin : 0 : 0 };
+        display:        ${ props => props.responsive ? props.responsive.phone.display ? props.responsive.phone.display : `inline` : `inline` };
     }
 `
 

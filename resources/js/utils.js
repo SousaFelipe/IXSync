@@ -33,6 +33,15 @@ const asset = {
             : defaultAvatar
     },
 
+
+    image: (filename) => {
+        let resource = `${ imgPath }/${ filename }`
+
+        return ((filename != undefined) && asset.exists(resource))
+            ? resource
+            : `${ imgPath }/imgNotFound.png`
+    }
+
 }
 
 

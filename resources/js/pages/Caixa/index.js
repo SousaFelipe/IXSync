@@ -151,60 +151,67 @@ export default class Caixa extends React.Component {
 
     render() {
         return (
-                <FlexContainer
-                    dimensions='full'
-                    direction='column'
-                    background='#EEE'
-                    align='strech'>
+            <FlexContainer
+                dimensions='full'
+                direction='column'
+                background='#EEE'
+                align='strech'>
 
-                    <FlexContent height='100px' >
-                        <FlexContainer height='100%' align='center'>
+                <FlexContent height='100px' >
+                    <FlexContainer height='100%' align='center'>
 
-                            <FlexContent grow={1}>
-                                <Segment padded={true} floated='left' compact basic>
-                                    <Button icon='sidebar' />
+                        <FlexContent grow={1}>
+                            <Segment padded={true} floated='left' compact basic>
+                                <Button icon='sidebar' />
+                            </Segment>
+                        </FlexContent>
+
+                        <FlexContent grow={1}>
+                            <Segment as={Segment.Group} textAlign='right' floated='right' size='small' horizontal basic>
+                                <Segment basic>
+                                    <List.Item floated='right'><strong>{ this.state.auth.user.name }</strong></List.Item>
+                                    <List.Item floated='right'>{ User.getPosition(this.state.auth.user.access) }</List.Item>
                                 </Segment>
-                            </FlexContent>
-
-                            <FlexContent grow={1}>
-                                <Segment as={Segment.Group} textAlign='right' floated='right' size='small' horizontal basic>
-                                    <Segment basic>
-                                        <List.Item floated='right'><strong>{ this.state.auth.user.name }</strong></List.Item>
-                                        <List.Item floated='right'>{ User.getPosition(this.state.auth.user.access) }</List.Item>
-                                    </Segment>
-                                    <Segment basic>
-                                        <Image src={ utils.asset.avatar(this.state.auth.user.code) } size='mini' verticalAlign='middle' circular/>
-                                    </Segment>
+                                <Segment basic>
+                                    <Image src={ utils.asset.avatar(this.state.auth.user.code) } size='mini' verticalAlign='middle' circular/>
                                 </Segment>
-                            </FlexContent>
+                            </Segment>
+                        </FlexContent>
 
-                        </FlexContainer>
-                    </FlexContent>
+                    </FlexContainer>
+                </FlexContent>
 
-                    <FlexContent grow={1}>
-                        <FlexContainer height='100%' justify='center' align='center'>
-                            <FlexContent responsive={ style.mainInputSearch }>
+                <FlexContent grow={1}>
+                    <FlexContainer height='100%' direction='column' justify='center' align='center'>
 
-                                    <Segment clearing>
-                                        <Input
-                                            type='search'
-                                            icon='search'
-                                            size='huge'
-                                            iconPosition='left'
-                                            placeholder='Nome ou CPF do cliente...'
-                                            floated='left'
-                                            onChange={ this.onSearhChange }
-                                            transparent
-                                            fluid />
-                                    </Segment>
+                        <FlexContent responsive={ style.mainLogo }>
+                            <Segment clearing basic padded>
+                                <Image src={ utils.asset.image(`banners/IXSync.png`) } size='large' />
+                            </Segment>
+                        </FlexContent>
 
-                                    { this.showMatchClients(this.state.clientes) }
+                        <FlexContent responsive={ style.mainInputSearch }>
 
-                            </FlexContent>
-                        </FlexContainer>
-                    </FlexContent>
+                                <Segment clearing>
+                                    <Input
+                                        type='search'
+                                        icon='search'
+                                        size='huge'
+                                        iconPosition='left'
+                                        placeholder='Nome ou CPF do cliente...'
+                                        floated='left'
+                                        onChange={ this.onSearhChange }
+                                        transparent
+                                        fluid />
+                                </Segment>
 
-                </FlexContainer>
+                                { this.showMatchClients(this.state.clientes) }
+
+                        </FlexContent>
+                    </FlexContainer>
+                </FlexContent>
+
+            </FlexContainer>
         )
     }
 }

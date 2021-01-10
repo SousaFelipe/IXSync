@@ -80892,7 +80892,7 @@ var FlexContent = /*#__PURE__*/function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n\n    ", "\n\n    ", "\n\n    flex-grow:          ", ";\n    flex-shrink:        ", ";\n    flex-basis:         ", ";\n\n    background-color:   ", ";\n\n\n    @media(min-width: 1025px) { width: ", "; }\n    @media(max-width: 1024px) {\n        width:          ", ";\n        margin-left:    ", ";\n        margin-right:   ", ";\n    }\n    @media(max-width: 800px) {\n        width:          ", ";\n        margin-left:    ", ";\n        margin-right:   ", ";\n    }\n    @media(max-width: 548px) {\n        width:          ", ";\n        margin-left:    ", ";\n        margin-right:   ", ";\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n\n    ", "\n\n    ", "\n\n    flex-grow:          ", ";\n    flex-shrink:        ", ";\n    flex-basis:         ", ";\n\n    background-color:   ", ";\n\n\n    @media(min-width: 1025px) { width: ", "; }\n    @media(max-width: 1024px) {\n        width:          ", ";\n        margin-left:    ", ";\n        margin-right:   ", ";\n        display:        ", ";\n    }\n    @media(max-width: 800px) {\n        width:          ", ";\n        margin-left:    ", ";\n        margin-right:   ", ";\n        display:        ", ";\n    }\n    @media(max-width: 548px) {\n        width:          ", ";\n        margin-left:    ", ";\n        margin-right:   ", ";\n        display:        ", ";\n    }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -80923,25 +80923,31 @@ var FlexContentStyle = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"]
 }, function (props) {
   return props.background ? props.background : "white";
 }, function (props) {
-  return props.responsive ? props.responsive.all.width : "auto";
+  return props.responsive ? props.responsive.all.width ? props.responsive.all.width : "auto" : "auto";
 }, function (props) {
-  return props.responsive ? props.responsive.desktop.width : "auto";
+  return props.responsive ? props.responsive.desktop.width ? props.responsive.desktop.width : "auto" : "auto";
 }, function (props) {
-  return props.responsive ? props.responsive.desktop.horizontalMargin : 0;
+  return props.responsive ? props.responsive.desktop.horizontalMargin ? props.responsive.desktop.horizontalMargin : 0 : 0;
 }, function (props) {
-  return props.responsive ? props.responsive.desktop.horizontalMargin : 0;
+  return props.responsive ? props.responsive.desktop.horizontalMargin ? props.responsive.desktop.horizontalMargin : 0 : 0;
 }, function (props) {
-  return props.responsive ? props.responsive.tablet.width : "auto";
+  return props.responsive ? props.responsive.desktop.display ? props.responsive.phone.display : "inline" : "inline";
 }, function (props) {
-  return props.responsive ? props.responsive.tablet.horizontalMargin : 0;
+  return props.responsive ? props.responsive.tablet.width ? props.responsive.tablet.width : "auto" : "auto";
 }, function (props) {
-  return props.responsive ? props.responsive.tablet.horizontalMargin : 0;
+  return props.responsive ? props.responsive.tablet.horizontalMargin ? props.responsive.tablet.horizontalMargin : 0 : 0;
 }, function (props) {
-  return props.responsive ? props.responsive.phone.width : "auto";
+  return props.responsive ? props.responsive.tablet.horizontalMargin ? props.responsive.tablet.horizontalMargin : 0 : 0;
 }, function (props) {
-  return props.responsive ? props.responsive.phone.horizontalMargin : 0;
+  return props.responsive ? props.responsive.tablet.display ? props.responsive.phone.display : "inline" : "inline";
 }, function (props) {
-  return props.responsive ? props.responsive.phone.horizontalMargin : 0;
+  return props.responsive ? props.responsive.phone.width ? props.responsive.phone.width : "auto" : "auto";
+}, function (props) {
+  return props.responsive ? props.responsive.phone.horizontalMargin ? props.responsive.phone.horizontalMargin : 0 : 0;
+}, function (props) {
+  return props.responsive ? props.responsive.phone.horizontalMargin ? props.responsive.phone.horizontalMargin : 0 : 0;
+}, function (props) {
+  return props.responsive ? props.responsive.phone.display ? props.responsive.phone.display : "inline" : "inline";
 });
 /* harmony default export */ __webpack_exports__["default"] = (FlexContentStyle);
 
@@ -81786,9 +81792,19 @@ var Caixa = /*#__PURE__*/function (_React$Component) {
         grow: 1
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_FlexContainer__WEBPACK_IMPORTED_MODULE_10__["default"], {
         height: "100%",
+        direction: "column",
         justify: "center",
         align: "center"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_FlexContent__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        responsive: _style__WEBPACK_IMPORTED_MODULE_4__["default"].mainLogo
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Segment"], {
+        clearing: true,
+        basic: true,
+        padded: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Image"], {
+        src: _utils__WEBPACK_IMPORTED_MODULE_6__["default"].asset.image("banners/IXSync.png"),
+        size: "large"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_FlexContent__WEBPACK_IMPORTED_MODULE_11__["default"], {
         responsive: _style__WEBPACK_IMPORTED_MODULE_4__["default"].mainInputSearch
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Segment"], {
         clearing: true
@@ -81839,6 +81855,14 @@ var Caixa = /*#__PURE__*/function (_React$Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 var style = {
+  mainLogo: {
+    all: {},
+    desktop: {},
+    tablet: {},
+    phone: {
+      display: "hidden"
+    }
+  },
   mainInputSearch: {
     all: {
       width: "800px"
@@ -82198,6 +82222,10 @@ var asset = {
   avatar: function avatar(filename) {
     var resource = "".concat(avatarPath, "/").concat(filename, ".png");
     return filename != undefined && asset.exists(resource) ? resource : defaultAvatar;
+  },
+  image: function image(filename) {
+    var resource = "".concat(imgPath, "/").concat(filename);
+    return filename != undefined && asset.exists(resource) ? resource : "".concat(imgPath, "/imgNotFound.png");
   }
 };
 var component = {
