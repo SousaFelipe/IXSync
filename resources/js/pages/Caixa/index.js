@@ -2,17 +2,10 @@ import React from 'react'
 import { Inertia } from '@inertiajs/inertia'
 
 
-import {
-    Button,
-    List,
-    Image,
-    Icon,
-    Input,
-    Segment,
-} from 'semantic-ui-react'
+// import { Icon } from 'semantic-ui-react'
 
 
-import 'semantic-ui-css/semantic.min.css'
+//import 'semantic-ui-css/semantic.min.css'
 import style from './style'
 import config from '../../config'
 import utils  from '../../utils'
@@ -25,6 +18,7 @@ import Grid from '../../components/Grid'
 import Column from '../../components/Grid/Column'
 import FlexContainer from '../../components/FlexContainer'
 import FlexContent from '../../components/FlexContent'
+import Input from '../../components/Input'
 
 import UL from '../../components/UL'
 import LI from '../../components/LI'
@@ -117,7 +111,8 @@ export default class Caixa extends React.Component {
         }
 
         return (
-            <LI
+            <></>
+            /*<LI
                 key={ cliente.id }
                 onClick={ selectClientItem }
                 hoverColor='#EEE'>
@@ -131,7 +126,7 @@ export default class Caixa extends React.Component {
                     <Column width={6} overflow={true}>{ cliente.complemento.toUpperCase() }</Column>
                 </Grid>
 
-            </LI>
+            </LI>*/
         )
     }
 
@@ -140,9 +135,10 @@ export default class Caixa extends React.Component {
     showMatchClients(clientes) {
         if (clientes.length > 0) {
             return (
-                <Segment clearing>
-                    <UL>{ clientes.map(this.createClientElement) }</UL>
-                </Segment>
+                <></>
+                //<Segment clearing>
+                //    <UL>{ clientes.map(this.createClientElement) }</UL>
+                //</Segment>
             )
         }
     }
@@ -158,56 +154,18 @@ export default class Caixa extends React.Component {
                 align='strech'>
 
                 <FlexContent height='100px' >
-                    <FlexContainer height='100%' align='center'>
 
-                        <FlexContent grow={1}>
-                            <Segment padded={true} floated='left' compact basic>
-                                <Button icon='sidebar' />
-                            </Segment>
-                        </FlexContent>
-
-                        <FlexContent grow={1}>
-                            <Segment as={Segment.Group} textAlign='right' floated='right' size='small' horizontal basic>
-                                <Segment basic>
-                                    <List.Item floated='right'><strong>{ this.state.auth.user.name }</strong></List.Item>
-                                    <List.Item floated='right'>{ User.getPosition(this.state.auth.user.access) }</List.Item>
-                                </Segment>
-                                <Segment basic>
-                                    <Image src={ utils.asset.avatar(this.state.auth.user.code) } size='mini' verticalAlign='middle' circular/>
-                                </Segment>
-                            </Segment>
-                        </FlexContent>
-
-                    </FlexContainer>
                 </FlexContent>
 
                 <FlexContent grow={1}>
-                    <FlexContainer height='100%' direction='column' justify='center' align='center'>
+                    <FlexContainer height='100%' direction='column' align='center'>
 
-                        <FlexContent responsive={ style.mainLogo }>
-                            <Segment clearing basic padded>
-                                <Image src={ utils.asset.image(`banners/IXSync.png`) } size='large' />
-                            </Segment>
-                        </FlexContent>
+                        <FlexContent >
 
-                        <FlexContent responsive={ style.mainInputSearch }>
-
-                                <Segment clearing>
-                                    <Input
-                                        type='search'
-                                        icon='search'
-                                        size='huge'
-                                        iconPosition='left'
-                                        placeholder='Nome ou CPF do cliente...'
-                                        floated='left'
-                                        onChange={ this.onSearhChange }
-                                        transparent
-                                        fluid />
-                                </Segment>
-
-                                { this.showMatchClients(this.state.clientes) }
+                            <Input size='large' placeholder='CPF ou nome do cliente...' />
 
                         </FlexContent>
+
                     </FlexContainer>
                 </FlexContent>
 
@@ -223,11 +181,53 @@ export default class Caixa extends React.Component {
 
 <Image src={ utils.asset.avatar('2dPsQxPM.png') } size='mini' verticalAlign='middle'/>
 
-<Segment.Group clearing basic>
-    <Segment padded='false' clearing>
-        <Input icon='search' type='search' iconPosition='left' size='huge' placeholder='Nome ou CPF do cliente...' transparent fluid/>
+<FlexContent responsive={ style.mainLogo }>
+    <Segment clearing basic padded>
+        <Image src={ utils.asset.image(`banners/IXSync.png`) } size='large' />
     </Segment>
-    <Segment></Segment>
-</Segment.Group>
+</FlexContent>
+
+<FlexContent height='100px' >
+    <FlexContainer height='100%' align='center'>
+
+        <FlexContent grow={1}>
+            <Segment padded={true} floated='left' compact basic>
+                <Button icon='sidebar' />
+            </Segment>
+        </FlexContent>
+
+        <FlexContent grow={1}>
+            <Segment as={Segment.Group} textAlign='right' floated='right' size='small' horizontal basic>
+                <Segment basic>
+                    <List.Item floated='right'><strong>{ this.state.auth.user.name }</strong></List.Item>
+                    <List.Item floated='right'>{ User.getPosition(this.state.auth.user.access) }</List.Item>
+                </Segment>
+                <Segment basic>
+                    <Image src={ utils.asset.avatar(this.state.auth.user.code) } size='mini' verticalAlign='middle' circular/>
+                </Segment>
+            </Segment>
+        </FlexContent>
+
+    </FlexContainer>
+</FlexContent>
+
+<FlexContent responsive={ style.mainInputSearch }>
+
+    <Segment clearing>
+        <Input
+            type='search'
+            icon='search'
+            size='huge'
+            iconPosition='left'
+            placeholder='Nome ou CPF do cliente...'
+            floated='left'
+            onChange={ this.onSearhChange }
+            transparent
+            fluid />
+    </Segment>
+
+    { this.showMatchClients(this.state.clientes) }
+
+</FlexContent>
 
 */

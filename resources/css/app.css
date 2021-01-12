@@ -1,4 +1,6 @@
 
+
+
 @font-face {
     font-family:'CloudBold';
     src: url('/fonts/CloudSans/Cloud-Bold.otf') format('otf');
@@ -7,12 +9,83 @@
 }
 
 @font-face {
-    font-family:'CloudLight';
-    src: url('/fonts/CloudSans/Cloud-Light.otf') format('otf');
-    font-style: normal;
-    font-weight: 500;
+    font-family:    'CloudLight';
+    src:            url('/fonts/CloudSans/Cloud-Light.otf') format('otf');
+    font-style:     normal;
+    font-weight:    500;
 }
 
+
+
+@font-face {
+    font-family:    'MPRounded-Thin';
+    src:            url('/fonts/M_PLUS_Rounded/MPLUSRounded1c-Thin.ttf') format('ttf');
+    font-style:     normal;
+    font-weight:    100;
+}
+
+@font-face {
+    font-family:    'MPRounded-Light';
+    src:            url('/fonts/M_PLUS_Rounded/MPLUSRounded1c-Light.ttf') format('ttf');
+    font-style:     normal;
+    font-weight:    300;
+}
+
+@font-face {
+    font-family:    'MPRounded-Regular';
+    src:            url('/fonts/M_PLUS_Rounded/MPLUSRounded1c-Regular.ttf') format('ttf');
+    font-style:     normal;
+    font-weight:    400;
+}
+
+@font-face {
+    font-family:    'MPRounded-Medium';
+    src:            url('/fonts/M_PLUS_Rounded/MPLUSRounded1c-Medium.ttf') format('ttf');
+    font-style:     normal;
+    font-weight:    500;
+}
+
+@font-face {
+    font-family:    'MPRounded-Bold';
+    src:            url('/fonts/M_PLUS_Rounded/MPLUSRounded1c-Bold.ttf') format('ttf');
+    font-style:     normal;
+    font-weight:    700;
+}
+
+@font-face {
+    font-family:    'MPRounded-ExtraBold';
+    src:            url('/fonts/M_PLUS_Rounded/MPLUSRounded1c-ExtraBold.ttf') format('ttf');
+    font-style:     normal;
+    font-weight:    800;
+}
+
+@font-face {
+    font-family:    'MPRounded-Black';
+    src:            url('/fonts/M_PLUS_Rounded/MPLUSRounded1c-Black.ttf') format('ttf');
+    font-style:     normal;
+    font-weight:    900;
+}
+
+
+
 *, body, html {
-    font-family: CloudBold, Arial, sans-serif;
+    font-family: MPRounded-Medium, Arial, sans-serif;
+}
+
+
+
+.primary-gradient {
+    background: rgb(25,118,210);
+    background: -moz-linear-gradient(90deg, rgba(25,118,210,1) 0%, rgba(66,165,245,1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(25,118,210,1) 0%, rgba(66,165,245,1) 100%);
+    background: linear-gradient(90deg, rgba(25,118,210,1) 0%, rgba(66,165,245,1) 100%);
+    filter:     progid:DXImageTransform.Microsoft.gradient(startColorstr="#1976d2",endColorstr="#42a5f5",GradientType=1);
+}
+
+.accent-gradient {
+    background: rgb(255,145,0);
+    background: -moz-linear-gradient(90deg, rgba(255,145,0,1) 0%, rgba(255,171,64,1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(255,145,0,1) 0%, rgba(255,171,64,1) 100%);
+    background: linear-gradient(90deg, rgba(255,145,0,1) 0%, rgba(255,171,64,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff9100",endColorstr="#ffab40",GradientType=1);
 }

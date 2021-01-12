@@ -1,54 +1,48 @@
 
 
 
+const color = {
+
+    primary:        `#1976D2`,
+    secondary:      `#42A5F5`,
+    accent:         `#FF9100`,
+
+    border:         `#CFD8DC`,
+    background:     `#E7EDF1`,
+
+    textPrimary:    `#263238`,
+    textSecondary:  `#455A64`,
+    textDisabled:   `#90A4AE`,
+
+    error:          `#F44336`
+
+}
+
+
+
+const dimensions = {
+
+
+    inputWidthSmall:    `150px`,
+    inputHeightSmall:   `36px`,
+
+    inputWidthMedium:   `300px`,
+    inputHeightMedium:  `46px`,
+
+    inputWidthLarge:    `600px`,
+    inputHeightLarge:   `56px`,
+
+
+}
+
+
+
 const styles = {
 
-    /*
-     * Dimensions
-     */
-    wS: { width: 200 },
-    wM: { width: 400 },
-    wG: { width: 600 },
+    color: color,
 
-    hS: { height: 200 },
-    hM: { height: 400 },
-    hG: { height: 600 },
+    dimensions: dimensions
 
-    pS: { padding: 2 },
-    pM: { padding: 4 },
-    pG: { padding: 8 },
-
-    pvS: { paddingTop: 2, paddingBottom: 2 },
-    pvM: { paddingTop: 4, paddingBottom: 4 },
-    pvG: { paddingTop: 8, paddingBottom: 8 },
-
-    vw100: { height: '100vw' },
-    vh100: { height: '100vh' },
-
-    mhS:  { marginLeft: 4,  marginRight: 4  },
-    mhM:  { marginLeft: 8,  marginRight: 8  },
-    mhL:  { marginLeft: 12, marginRight: 12 },
-    mhG:  { marginLeft: 16, marginRight: 16 },
-    mhXG: { marginLeft: 18, marginRight: 18 },
-
-    mvS:  { marginTop: 4,  marginBottom: 4  },
-    mvM:  { marginTop: 8,  marginBottom: 8  },
-    mvL:  { marginTop: 12, marginBottom: 12 },
-    mvG:  { marginTop: 16, marginBottom: 16 },
-    mvXG: { marginTop: 18, marginBottom: 18 },
-
-    /*
-     * Misselanious
-     */
-    hiddenOverflow: {
-        whiteSpace:     'nowrap',
-        overflow:       'hidden',
-        textOverflow:   'ellipsis'
-    },
-
-    selectable: {
-        cursor: 'pointer',
-    }
 }
 
 
