@@ -2,11 +2,6 @@ import React from 'react'
 import { Inertia } from '@inertiajs/inertia'
 
 
-// import { Icon } from 'semantic-ui-react'
-
-
-//import 'semantic-ui-css/semantic.min.css'
-import style from './style'
 import config from '../../config'
 import utils  from '../../utils'
 
@@ -14,14 +9,11 @@ import utils  from '../../utils'
 import User from '../../models/User'
 
 
-import Grid from '../../components/Grid'
-import Column from '../../components/Grid/Column'
 import FlexContainer from '../../components/FlexContainer'
 import FlexContent from '../../components/FlexContent'
+import Icon from '../../components/Icon'
 import Input from '../../components/Input'
-
-import UL from '../../components/UL'
-import LI from '../../components/LI'
+import P from '../../components/P'
 
 
 
@@ -153,12 +145,26 @@ export default class Caixa extends React.Component {
                 background='#EEE'
                 align='strech'>
 
-                <FlexContent height='100px' >
+                <FlexContent height='100px'>
+                    <FlexContainer height='100%' align='center' pandded='large'>
 
+                        <FlexContent grow={1}>
+                            <Icon name='menu'/>
+                        </FlexContent>
+
+                    </FlexContainer>
                 </FlexContent>
+
+                <FlexContent height='100px' />
 
                 <FlexContent grow={1}>
                     <FlexContainer height='100%' direction='column' align='center'>
+
+                        <FlexContent>
+                            <FlexContainer width='100%' align='center'>
+                                <P fontWeight='900' fontSize='5rem' primary>IX</P><P fontSize='5rem'>Sync</P>
+                            </FlexContainer>
+                        </FlexContent>
 
                         <FlexContent >
 

@@ -1,34 +1,55 @@
 
 
 
-const dimensions = {
+function dimensions(size) {
 
-    small: {
-        width:          `150px`,
-        height:         `36px`,
-        paddingH:       `8px`,
-        paddingV:       `4px`,
-        borderRadius:   `18px`
-    },
+    const sizes = {
 
+        'small': () => {
+            return {
 
-    medium: {
-        width:          `300px`,
-        height:         `46px`,
-        paddingH:       `12px`,
-        paddingV:       `8px`,
-        borderRadius:   `23px`
-    },
+                width:          `150px`,
+                height:         `28px`,
+                borderRadius:   `14px`,
 
+                padding: {
+                    horizontal: `14px`,
+                    vertical:   `8px`
+                }
+            }
+        },
 
-    large: {
-        width:          `600px`,
-        height:         `56px`,
-        paddingH:       `16px`,
-        paddingV:       `12px`,
-        borderRadius:   `28px`
+        'medium': () => {
+            return {
+
+                width:          `300px`,
+                height:         `46px`,
+                borderRadius:   `23px`,
+
+                padding: {
+                    horizontal: `16px`,
+                    vertical:   `10px`
+                }
+            }
+        },
+
+        'large': () => {
+            return {
+
+                width:          `700px`,
+                height:         `56px`,
+                borderRadius:   `28px`,
+                fontSize:       `1rem`,
+
+                padding: {
+                    horizontal: `26px`,
+                    vertical:   `14px`
+                }
+            }
+        }
     }
 
+    return (sizes[size] || sizes['medium'])()
 }
 
 

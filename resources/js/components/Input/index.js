@@ -20,111 +20,35 @@ export default class Input extends Component {
 
 
     getWidth() {
-        if (this.props.block) return `100%`
-        if (this.props.width) return this.props.width
 
-        if (this.props.size) {
-            switch(this.props.size) {
-                case 'small':
-                    return dimensions.small.width
-                case 'medium':
-                    return dimensions.medium.width
-                case 'large':
-                    return dimensions.large.width
-            }
-        }
+        if (this.props.block)
+            return `100%`
 
-        return dimensions.medium.width
-    }
+        if (this.props.width)
+            return this.props.width
 
-
-
-    getHeight() {
-
-        if (this.props.size) {
-            switch(this.props.size) {
-                case 'small':
-                    return dimensions.small.height
-                case 'medium':
-                    return dimensions.medium.height
-                case 'large':
-                    return dimensions.large.height
-            }
-        }
-
-        return dimensions.medium.height
-    }
-
-
-
-    getBorderRadius() {
-        if (this.props.size) {
-            switch(this.props.size) {
-                case 'small':
-                    return dimensions.small.borderRadius
-                case 'medium':
-                    return dimensions.medium.borderRadius
-                case 'large':
-                    return dimensions.large.borderRadius
-            }
-        }
-
-        return dimensions.medium.borderRadius
-    }
-
-
-
-    getHPadding() {
-        if (this.props.size) {
-            switch(this.props.size) {
-                case 'small':
-                    return dimensions.small.paddingH
-                case 'medium':
-                    return dimensions.medium.paddingH
-                case 'large':
-                    return dimensions.large.paddingH
-            }
-        }
-
-        return dimensions.medium.paddingH
-    }
-
-
-
-    getVPadding() {
-        if (this.props.size) {
-            switch(this.props.size) {
-                case 'small':
-                    return dimensions.small.paddingV
-                case 'medium':
-                    return dimensions.medium.paddingV
-                case 'large':
-                    return dimensions.large.paddingV
-            }
-        }
-
-        return dimensions.medium.paddingV
+        return dimensions(this.props.size).width
     }
 
 
 
     render() {
 
-        console.log(this.getWidth())
-        console.log(this.getHeight())
+        const dimension = dimensions(this.props.size)
 
         return (
             <InputStyle
 
                 type={ this.props.type || `text` }
-                width={ this.getWidth() }
-                height={ this.getHeight() }
-                borderRadius={ this.getBorderRadius() }
-
-                paddingH={ this.getHPadding() }
-                paddingV={ this.getVPadding() }
-
                 placeholder={ this.props.placeholder }
+
+                width={ this.getWidth() }
+                height={ dimension.height }
+                paddingH={ dimension.padding.horizontal }
+                paddingV={ dimension.padding.vertical }
+                borderRadius={ dimension.borderRadius }
+
+                fontSize={ dimension.fontSize }
 
                 background={ styles.color.background } />
         )

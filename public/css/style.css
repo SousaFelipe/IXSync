@@ -3,7 +3,11 @@
 
 
 *, body, html {
-    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-family:     'M PLUS Rounded 1c', sans-serif;
+    -moz-box-sizing: border-box;
+    box-sizing:      border-box;
+    padding:         0;
+    margin:          0;
 }
 
 
@@ -21,5 +25,5 @@
     background: -moz-linear-gradient(90deg, rgba(255,145,0,1) 0%, rgba(255,171,64,1) 100%);
     background: -webkit-linear-gradient(90deg, rgba(255,145,0,1) 0%, rgba(255,171,64,1) 100%);
     background: linear-gradient(90deg, rgba(255,145,0,1) 0%, rgba(255,171,64,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff9100",endColorstr="#ffab40",GradientType=1);
+    filter:     progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff9100",endColorstr="#ffab40",GradientType=1);
 }

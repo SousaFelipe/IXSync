@@ -6,6 +6,7 @@ import config from './config'
 
 
 const imgPath       = `${ config.ixsHost }/storage/img`
+const svgPath       = `${ imgPath }/svg`
 const avatarPath    = `${ imgPath }/avatars`
 
 const defaultAvatar = `${ avatarPath }/default.png`
@@ -40,6 +41,15 @@ const asset = {
         return ((filename != undefined) && asset.exists(resource))
             ? resource
             : `${ imgPath }/imgNotFound.png`
+    },
+
+
+    svg: (filename) => {
+        let resource = `${ svgPath }/${ filename }.svg`
+
+        return ((filename != undefined) && asset.exists(resource))
+            ? resource
+            : `${ svgPath }/svgNotFound.svg`
     }
 
 }

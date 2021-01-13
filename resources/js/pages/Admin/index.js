@@ -2,10 +2,6 @@
 import React from 'react'
 import { Inertia } from '@inertiajs/inertia'
 
-import { Button, Form, Grid } from 'semantic-ui-react'
-
-
-import 'semantic-ui-css/semantic.min.css'
 
 
 export default class Admin extends React.Component {
@@ -35,17 +31,7 @@ export default class Admin extends React.Component {
 
     render() {
         return (
-            <Grid columns={ 3 }>
-                <Grid.Row>
-                    <Grid.Column> </Grid.Column>
-                    <Grid.Column>
-                        <Form onSubmit={ this.doLogout }>
-                            <Button type='subbmit' negative fluid>Sair</Button>
-                        </Form>
-                    </Grid.Column>
-                    <Grid.Column> </Grid.Column>
-                </Grid.Row>
-            </Grid>
+            <></>
         )
     }
 }

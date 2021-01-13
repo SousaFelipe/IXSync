@@ -8,7 +8,7 @@ const color = {
     accent:         `#FF9100`,
 
     border:         `#CFD8DC`,
-    background:     `#E7EDF1`,
+    background:     `#EAEBEC`,
 
     textPrimary:    `#263238`,
     textSecondary:  `#455A64`,
@@ -20,28 +20,9 @@ const color = {
 
 
 
-const dimensions = {
-
-
-    inputWidthSmall:    `150px`,
-    inputHeightSmall:   `36px`,
-
-    inputWidthMedium:   `300px`,
-    inputHeightMedium:  `46px`,
-
-    inputWidthLarge:    `600px`,
-    inputHeightLarge:   `56px`,
-
-
-}
-
-
-
 const styles = {
 
     color: color,
-
-    dimensions: dimensions
 
 }
 

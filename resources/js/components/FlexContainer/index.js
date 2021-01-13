@@ -28,12 +28,28 @@ export default class FlexContainer extends Component {
 
 
 
+    getFluidPandding(pandded) {
+
+        const padding = {
+            'small':  () => `20px`,
+            'medium': () => `30px`,
+            'large':  () => `40px`,
+            'xlarge': () => `50px`,
+            'default':() => '0'
+        }
+
+        return (padding[pandded] || padding['default'])()
+    }
+
+
+
     render() {
 
         return (
             <FlexContainerStyle
                 width={ utils.component.dimensions(this.props).w }
                 height={ utils.component.dimensions(this.props).h }
+                pandded={ this.getFluidPandding(this.props.pandded) }
                 direction={ utils.component.direction(this.props) }
                 reverse={ this.props.reverse }
                 justify={ utils.component.justify(this.props) }
