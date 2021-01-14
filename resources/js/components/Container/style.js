@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 
 
-const FlexContainerStyle = styled.section `
+const ContainerStyle = styled.section `
     display:            flex;
     width:              ${ props => props.width };
     height:             ${ props => props.height };
@@ -17,4 +17,4 @@ const FlexContainerStyle = styled.section `
 
 
 
-export default FlexContainerStyle
+export default ContainerStyle

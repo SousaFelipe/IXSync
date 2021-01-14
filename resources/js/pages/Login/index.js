@@ -38,12 +38,10 @@ export default class Login extends Component {
     UNSAFE_componentWillMount () {
         fetch(`${ config.ixsHost }/auth`)
             .then(response => response.json())
-            .then(data => this.setState({
-                auth: {
-                    user: new User({ ...data.user }),
-                    csrf_token: data.csrf_token
-                }
-            }))
+            .then(data => this.setState({auth: {
+                user: new User({ ...data.user }),
+                csrf_token: data.csrf_token
+            }}))
     }
 
 
@@ -104,7 +102,7 @@ export default class Login extends Component {
                     onChange={ this.onPasswordChange }
                     placeholder='Senha' />
 
-                <button>Entrar</button>
+                <button onClick={ this.doLogin }>Entrar</button>
 
             </>
         )

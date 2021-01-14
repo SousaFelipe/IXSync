@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 
 
 
-import FlexContainerStyle from './style'
+import ContainerStyle from './style'
 
 import utils from '../../utils'
 
 
 
-export default class FlexContainer extends Component {
+export default class Container extends Component {
 
 
 
@@ -46,7 +46,7 @@ export default class FlexContainer extends Component {
     render() {
 
         return (
-            <FlexContainerStyle
+            <ContainerStyle
                 width={ utils.component.dimensions(this.props).w }
                 height={ utils.component.dimensions(this.props).h }
                 pandded={ this.getFluidPandding(this.props.pandded) }
@@ -58,7 +58,7 @@ export default class FlexContainer extends Component {
 
                 { this.renderChildrens() }
 
-            </FlexContainerStyle>
+            </ContainerStyle>
         )
     }
 }

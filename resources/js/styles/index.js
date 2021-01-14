@@ -3,6 +3,7 @@
 
 const color = {
 
+
     primary:        `#1976D2`,
     secondary:      `#42A5F5`,
     accent:         `#FF9100`,
@@ -14,7 +15,29 @@ const color = {
     textSecondary:  `#455A64`,
     textDisabled:   `#90A4AE`,
 
-    error:          `#F44336`
+    error:          `#F44336`,
+
+
+    get: function (color) {
+
+        const colors = {
+
+            'primary':       () => this.primary,
+            'secondary':     () => this.secondary,
+            'accent':        () => this.accent,
+
+            'border':        () => this.border,
+            'background':    () => this.background,
+
+            'textPrimary':   () => this.textPrimary,
+            'textSecondary': () => this.textSecondary,
+            'textDisabled':  () => this.textDisabled,
+
+            'error':         () => this.error
+        }
+
+        return (colors[color] || colors['textDisabled'])()
+    }
 
 }
 

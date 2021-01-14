@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 
 
 
-import FlexContentStyle from './style'
+import ContentStyle from './style'
 
 import utils from '../../utils'
 
 
 
-export default class FlexContent extends Component {
+export default class Content extends Component {
 
 
 
@@ -20,12 +20,14 @@ export default class FlexContent extends Component {
 
     render() {
 
+        const dimension = utils.component.dimensions(this.props)
+
         return (
-            <FlexContentStyle
+            <ContentStyle
                 responsive={ this.props.responsive }
                 aligned={ this.props.aligned }
-                width={ utils.component.dimensions(this.props).w }
-                height={ utils.component.dimensions(this.props).h }
+                width={ dimension.w }
+                height={ dimension.h }
                 grow={ this.props.grow }
                 shrink={ this.props.shrink }
                 basis={ this.props.basis }
@@ -33,7 +35,7 @@ export default class FlexContent extends Component {
 
                 { this.props.children }
 
-            </FlexContentStyle>
+            </ContentStyle>
         )
     }
 }

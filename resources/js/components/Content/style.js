@@ -10,7 +10,7 @@ import styled from 'styled-components'
 
 
 
-const FlexContentStyle = styled.div `
+const ContentStyle = styled.div `
 
     ${props => {
         return props.responsive ? `` : `width: ${ props.width ? props.width : `auto` };`
@@ -50,4 +50,4 @@ const FlexContentStyle = styled.div `
 
 
 
-export default FlexContentStyle
+export default ContentStyle

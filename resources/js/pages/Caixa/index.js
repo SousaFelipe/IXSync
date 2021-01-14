@@ -9,8 +9,9 @@ import utils  from '../../utils'
 import User from '../../models/User'
 
 
-import FlexContainer from '../../components/FlexContainer'
-import FlexContent from '../../components/FlexContent'
+import Button from '../../components/Button'
+import Container from '../../components/Container'
+import Content from '../../components/Content'
 import Icon from '../../components/Icon'
 import Input from '../../components/Input'
 import P from '../../components/P'
@@ -139,43 +140,43 @@ export default class Caixa extends React.Component {
 
     render() {
         return (
-            <FlexContainer
+            <Container
                 dimensions='full'
                 direction='column'
                 background='#EEE'
                 align='strech'>
 
-                <FlexContent height='100px'>
-                    <FlexContainer height='100%' align='center' pandded='large'>
+                <Content height='100px'>
+                    <Container height='100%' align='center' pandded='large'>
 
-                        <FlexContent grow={1}>
-                            <Icon name='menu'/>
-                        </FlexContent>
+                        <Content grow={1}>
+                            <Button size='small'>Primary</Button> { /*<Icon name='menu' size='small'/>*/ }
+                        </Content>
 
-                    </FlexContainer>
-                </FlexContent>
+                    </Container>
+                </Content>
 
-                <FlexContent height='100px' />
+                <Content height='100px' />
 
-                <FlexContent grow={1}>
-                    <FlexContainer height='100%' direction='column' align='center'>
+                <Content grow={1}>
+                    <Container height='100%' direction='column' align='center'>
 
-                        <FlexContent>
-                            <FlexContainer width='100%' align='center'>
+                        <Content>
+                            <Container width='100%' align='center'>
                                 <P fontWeight='900' fontSize='5rem' primary>IX</P><P fontSize='5rem'>Sync</P>
-                            </FlexContainer>
-                        </FlexContent>
+                            </Container>
+                        </Content>
 
-                        <FlexContent >
+                        <Content >
 
                             <Input size='large' placeholder='CPF ou nome do cliente...' />
 
-                        </FlexContent>
+                        </Content>
 
-                    </FlexContainer>
-                </FlexContent>
+                    </Container>
+                </Content>
 
-            </FlexContainer>
+            </Container>
         )
     }
 }
