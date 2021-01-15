@@ -36659,22 +36659,22 @@ function dimensions(size) {
       return {
         verticalPadding: "4px",
         horizontalPadding: "8px",
-        borderRadius: "3px",
+        borderRadius: "5px",
         fontSize: "0.7rem"
       };
     },
     'medium': function medium() {
       return {
         verticalPadding: "6px",
-        horizontalPadding: "14px",
-        borderRadius: "6px",
-        fontSize: "0.8rem"
+        horizontalPadding: "12px",
+        borderRadius: "7px",
+        fontSize: "1rem"
       };
     },
     'large': function large() {
       return {
         verticalPadding: "8px",
-        horizontalPadding: "18px",
+        horizontalPadding: "20px",
         borderRadius: "10px",
         fontSize: "1.5rem"
       };
@@ -36743,20 +36743,22 @@ var Button = /*#__PURE__*/function (_Component) {
   _createClass(Button, [{
     key: "getColor",
     value: function getColor() {
+      var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+
       if (this.props.color) {
-        return this.props.color.indexOf('#') === 0 ? this.props.color : _styles__WEBPACK_IMPORTED_MODULE_3__["default"].color.get(this.props.color);
+        return this.props.color.indexOf('#') === 0 ? this.props.color : _styles__WEBPACK_IMPORTED_MODULE_3__["default"].color.get(this.props.color, false, alpha);
       }
 
-      return _styles__WEBPACK_IMPORTED_MODULE_3__["default"].color.textDisabled;
+      return _styles__WEBPACK_IMPORTED_MODULE_3__["default"].color.border(alpha);
     }
   }, {
     key: "getForegroundColor",
     value: function getForegroundColor() {
       if (this.props.color) {
-        return this.props.color.indexOf('#') === 0 ? this.props.color : _styles__WEBPACK_IMPORTED_MODULE_3__["default"].color.get(this.props.color);
+        return this.props.color.indexOf('#') === 0 ? this.props.color : _styles__WEBPACK_IMPORTED_MODULE_3__["default"].color.get(this.props.color, true, 1);
       }
 
-      return '#FFFFFF';
+      return _styles__WEBPACK_IMPORTED_MODULE_3__["default"].color.backgroundInverted(1);
     }
   }, {
     key: "render",
@@ -36764,14 +36766,17 @@ var Button = /*#__PURE__*/function (_Component) {
       var dim = Object(_dimensions__WEBPACK_IMPORTED_MODULE_2__["default"])(this.props.size);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_1__["default"], {
         block: this.props.block,
-        outline: this.props.outline,
+        outline: this.props.outline != undefined || this.props.outline == true,
+        flat: this.props.flat != undefined || this.props.flat == true,
+        disabled: this.props.disabled != undefined || this.props.disabled == true,
         width: this.props.width,
         height: this.props.height,
         verticalPadding: dim.verticalPadding,
         horizontalPadding: dim.horizontalPadding,
         borderRadius: dim.borderRadius,
-        foreGround: this.getForegroundColor(),
         fontSize: dim.fontSize,
+        foreGround: this.getForegroundColor(),
+        outlineColor: this.getColor(0.4),
         color: this.getColor()
       }, this.props.children);
     }
@@ -36795,7 +36800,7 @@ var Button = /*#__PURE__*/function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n\n    ", "\n    ", "\n\n    ", "\n\n    ", "\n\n    padding-top:    ", ";\n    padding-bottom: ", ";\n\n    padding-left:   ", ";\n    padding-right:  ", ";\n\n    border-radius:  ", ";\n\n    color:          ", ";\n    font-size:      ", ";\n    font-weight:    700;\n    cursor:         pointer;\n\n"]);
+  var data = _taggedTemplateLiteral(["\n\n    ", "\n    ", "\n    ", "\n\n    ", "\n\n    ", "\n\n    padding-top:            ", ";\n    padding-bottom:         ", ";\n\n    padding-left:           ", ";\n    padding-right:          ", ";\n\n    border-radius:          ", ";\n    -webkit-border-radius:  ", ";\n    -moz-border-radius:     ", ";\n\n    font-size:              ", ";\n    color:                  ", ";\n    font-weight:            700;\n    transition:             0.3s;\n\n    &:focus {\n        outline:    none;\n        box-shadow: 0px 0px 0px ", "px ", ";\n    }\n\n    ", "\n\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -36810,11 +36815,13 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 var ButtonStyle = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].button(_templateObject(), function (props) {
   return props.block ? "display: block;" : "";
 }, function (props) {
-  return "background: ".concat(props.outline ? "none" : props.color, ";");
+  return props.disabled ? "" : "cursor: pointer;";
+}, function (props) {
+  return "background: ".concat(props.outline || props.flat ? "none" : props.disabled ? props.outlineColor : props.color, ";");
 }, function (props) {
   return props.block ? "" : props.width ? "width: ".concat(props.width, ";") : "width: auto;";
 }, function (props) {
-  return props.outline ? "border: 1px solid ".concat(props.color, ";") : 'border: none;';
+  return props.outline ? "border: 2px solid ".concat(props.color, ";") : 'border: none;';
 }, function (props) {
   return props.verticalPadding;
 }, function (props) {
@@ -36826,9 +36833,19 @@ var ButtonStyle = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].butt
 }, function (props) {
   return props.borderRadius;
 }, function (props) {
-  return props.foreGround;
+  return props.borderRadius;
+}, function (props) {
+  return props.borderRadius;
 }, function (props) {
   return props.fontSize;
+}, function (props) {
+  return props.outline ? props.color : props.foreGround;
+}, function (props) {
+  return props.disabled || props.flat ? "0" : "3";
+}, function (props) {
+  return props.outlineColor;
+}, function (props) {
+  return props.outline ? "&:hover {\n            color:      ".concat(props.foreGround, ";\n            background: ").concat(props.color, ";\n        }") : "";
 });
 /* harmony default export */ __webpack_exports__["default"] = (ButtonStyle);
 
@@ -37322,7 +37339,7 @@ var Icon = /*#__PURE__*/function (_Component) {
         return this.props.color.indexOf('#') === 0 ? this.props.color : _styles__WEBPACK_IMPORTED_MODULE_3__["default"].color.get(this.props.color);
       }
 
-      return _styles__WEBPACK_IMPORTED_MODULE_3__["default"].color.textDisabled;
+      return _styles__WEBPACK_IMPORTED_MODULE_3__["default"].color.textDisabled();
     }
   }, {
     key: "render",
@@ -37506,7 +37523,7 @@ var Input = /*#__PURE__*/function (_Component) {
         paddingV: dimension.padding.vertical,
         borderRadius: dimension.borderRadius,
         fontSize: dimension.fontSize,
-        background: _styles__WEBPACK_IMPORTED_MODULE_3__["default"].color.background
+        background: _styles__WEBPACK_IMPORTED_MODULE_3__["default"].color.background()
       });
     }
   }]);
@@ -37620,8 +37637,8 @@ var P = /*#__PURE__*/function (_Component) {
   _createClass(P, [{
     key: "getColor",
     value: function getColor() {
-      if (this.props.primary) return _styles__WEBPACK_IMPORTED_MODULE_1__["default"].color.primary;
-      return this.props.color || _styles__WEBPACK_IMPORTED_MODULE_1__["default"].color.textPrimary;
+      if (this.props.primary) return _styles__WEBPACK_IMPORTED_MODULE_1__["default"].color.primary(1);
+      return this.props.color || _styles__WEBPACK_IMPORTED_MODULE_1__["default"].color.textPrimary();
     }
   }, {
     key: "render",
@@ -38027,9 +38044,21 @@ var Caixa = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Content__WEBPACK_IMPORTED_MODULE_7__["default"], {
         grow: 1
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        flat: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Icon__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        name: "menu",
         size: "small"
-      }, "Primary"), " "))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Content__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        height: "100px"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Content__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        grow: 1
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Container__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        height: "100%",
+        align: "right"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Content__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        basic: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_P__WEBPACK_IMPORTED_MODULE_10__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.auth.user.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_P__WEBPACK_IMPORTED_MODULE_10__["default"], null, _models_User__WEBPACK_IMPORTED_MODULE_4__["default"].getPosition(this.state.auth.user.access))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Content__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        basic: true
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Content__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        height: "80px"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Content__WEBPACK_IMPORTED_MODULE_7__["default"], {
         grow: 1
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Container__WEBPACK_IMPORTED_MODULE_6__["default"], {
@@ -38372,48 +38401,142 @@ function icon(name) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 var color = {
-  primary: "#1976D2",
-  secondary: "#42A5F5",
-  accent: "#FF9100",
-  border: "#CFD8DC",
-  background: "#EAEBEC",
-  textPrimary: "#263238",
-  textSecondary: "#455A64",
-  textDisabled: "#90A4AE",
-  error: "#F44336",
+  primaryDark: function primaryDark() {
+    var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+    return "rgba(13, 71, 161, ".concat(alpha, ")");
+  },
+  primary: function primary() {
+    var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+    return "rgba(25, 118, 210, ".concat(alpha, ")");
+  },
+  secondary: function secondary() {
+    var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+    return "rgba(33, 150, 243, ".concat(alpha, ")");
+  },
+  tertiary: function tertiary() {
+    var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+    return "rgba(144, 202, 249, ".concat(alpha, ")");
+  },
+  accent: function accent() {
+    var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+    return "rgba(24, 255, 255, ".concat(alpha, ")");
+  },
+  border: function border() {
+    var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+    return "rgba(207, 216, 220, ".concat(alpha, ")");
+  },
+  background: function background() {
+    var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+    return "rgba(234, 235, 236, ".concat(alpha, ")");
+  },
+  textPrimary: function textPrimary() {
+    var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+    return "rgba(38, 50, 56, ".concat(alpha, ")");
+  },
+  textSecondary: function textSecondary() {
+    var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+    return "rgba(69, 90, 100, ".concat(alpha, ")");
+  },
+  textDisabled: function textDisabled() {
+    var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+    return "rgba(144, 164, 174, ".concat(alpha, ")");
+  },
+  error: function error() {
+    var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+    return "rgba(244, 67, 54, ".concat(alpha, ")");
+  },
+  primaryInverted: function primaryInverted() {
+    var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+    return "rgba(236, 239, 241, ".concat(alpha, ")");
+  },
+  secondaryInverted: function secondaryInverted() {
+    var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+    return "rgba(255, 255, 255, ".concat(alpha, ")");
+  },
+  accentInverted: function accentInverted() {
+    var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+    return "rgba(38, 50, 56, ".concat(alpha, ")");
+  },
+  disabledInverted: function disabledInverted() {
+    var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+    return "rgba(120, 144, 156, ".concat(alpha, ")");
+  },
+  backgroundInverted: function backgroundInverted() {
+    var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+    return "rgba(55, 71, 79, ".concat(alpha, ")");
+  },
+
+  /**
+   *
+   * @param {string}  color       Color name for background component
+   * @param {boolean} inverted    Color inverted for foreground component
+   */
   get: function get(color) {
     var _this = this;
 
+    var inverted = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    var alpha = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
     var colors = {
       'primary': function primary() {
-        return _this.primary;
+        var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+        return _this.primary(alpha);
       },
       'secondary': function secondary() {
-        return _this.secondary;
+        var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+        return _this.secondary(alpha);
       },
       'accent': function accent() {
-        return _this.accent;
+        var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+        return _this.accent(alpha);
       },
       'border': function border() {
-        return _this.border;
+        var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+        return _this.border(alpha);
       },
       'background': function background() {
-        return _this.background;
+        var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+        return _this.background(alpha);
       },
       'textPrimary': function textPrimary() {
-        return _this.textPrimary;
+        var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+        return _this.textPrimary(alpha);
       },
       'textSecondary': function textSecondary() {
-        return _this.textSecondary;
+        var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+        return _this.textSecondary(alpha);
       },
       'textDisabled': function textDisabled() {
-        return _this.textDisabled;
+        var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+        return _this.textDisabled(alpha);
       },
       'error': function error() {
-        return _this.error;
+        var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+        return _this.error(alpha);
       }
     };
-    return (colors[color] || colors['textDisabled'])();
+    var invertedColors = {
+      'primary': function primary() {
+        var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+        return _this.primaryInverted(alpha);
+      },
+      'secondary': function secondary() {
+        var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+        return _this.secondaryInverted(alpha);
+      },
+      'disabled': function disabled() {
+        var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+        return _this.disabledInverted(alpha);
+      },
+      'accent': function accent() {
+        var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+        return _this.accentInverted(alpha);
+      },
+      'background': function background() {
+        var alpha = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+        return _this.backgroundInverted(alpha);
+      }
+    };
+    return inverted ? (invertedColors[color] || invertedColors['primary'])(alpha) : (colors[color] || colors['textDisabled'])(alpha);
   }
 };
 var styles = {

@@ -150,13 +150,27 @@ export default class Caixa extends React.Component {
                     <Container height='100%' align='center' pandded='large'>
 
                         <Content grow={1}>
-                            <Button size='small'>Primary</Button> { /*<Icon name='menu' size='small'/>*/ }
+                            <Button flat>
+                                <Icon name='menu' size='small'/>
+                            </Button>
+                        </Content>
+
+                        <Content grow={1}>
+                            <Container height='100%' align='right'>
+                                <Content basic>
+                                    <P><strong>{ this.state.auth.user.name }</strong></P>
+                                    <P>{ User.getPosition(this.state.auth.user.access) }</P>
+                                </Content>
+                                <Content basic>
+                                    { /*<Image src={ utils.asset.avatar(this.state.auth.user.code) } size='mini' verticalAlign='middle' circular/> */}
+                                </Content>
+                            </Container>
                         </Content>
 
                     </Container>
                 </Content>
 
-                <Content height='100px' />
+                <Content height='80px' />
 
                 <Content grow={1}>
                     <Container height='100%' direction='column' align='center'>

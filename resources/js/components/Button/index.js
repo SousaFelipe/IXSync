@@ -20,18 +20,17 @@ export default class Button extends Component {
 
 
 
-    getColor() {
+    getColor(alpha = 1) {
 
         if (this.props.color) {
 
             return (this.props.color.indexOf('#') === 0)
                 ? this.props.color
-                : styles.color.get(this.props.color)
+                : styles.color.get(this.props.color, false, alpha)
         }
 
-        return styles.color.textDisabled
+        return styles.color.border(alpha)
     }
-
 
 
     getForegroundColor() {
@@ -40,10 +39,10 @@ export default class Button extends Component {
 
             return (this.props.color.indexOf('#') === 0)
                 ? this.props.color
-                : styles.color.get(this.props.color)
+                : styles.color.get(this.props.color, true, 1)
         }
 
-        return '#FFFFFF'
+        return styles.color.backgroundInverted(1)
     }
 
 
@@ -55,14 +54,17 @@ export default class Button extends Component {
         return (
             <ButtonStyle
                 block={ this.props.block }
-                outline={ this.props.outline }
+                outline={ (this.props.outline != undefined || this.props.outline == true) }
+                flat={ (this.props.flat != undefined || this.props.flat == true) }
+                disabled={ (this.props.disabled != undefined || this.props.disabled == true) }
                 width={ this.props.width }
                 height={ this.props.height }
                 verticalPadding={ dim.verticalPadding }
                 horizontalPadding={ dim.horizontalPadding }
                 borderRadius={ dim.borderRadius }
-                foreGround={ this.getForegroundColor() }
                 fontSize={ dim.fontSize }
+                foreGround={ this.getForegroundColor() }
+                outlineColor={ this.getColor(0.4) }
                 color={ this.getColor() }>
 
                 { this.props.children }

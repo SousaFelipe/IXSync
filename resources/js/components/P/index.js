@@ -22,9 +22,9 @@ export default class P extends Component {
     getColor() {
 
         if (this.props.primary)
-            return styles.color.primary
+            return styles.color.primary(1)
 
-        return (this.props.color || styles.color.textPrimary)
+        return (this.props.color || styles.color.textPrimary())
     }
 
 

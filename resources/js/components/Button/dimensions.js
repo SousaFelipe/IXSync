@@ -9,7 +9,7 @@ function dimensions(size) {
             return {
                 verticalPadding:    `4px`,
                 horizontalPadding:  `8px`,
-                borderRadius:       `3px`,
+                borderRadius:       `5px`,
                 fontSize:           `0.7rem`
             }
         },
@@ -17,16 +17,16 @@ function dimensions(size) {
         'medium':   () => {
             return {
                 verticalPadding:    `6px`,
-                horizontalPadding:  `14px`,
-                borderRadius:       `6px`,
-                fontSize:           `0.8rem`
+                horizontalPadding:  `12px`,
+                borderRadius:       `7px`,
+                fontSize:           `1rem`
             }
         },
 
         'large':    () => {
             return {
                 verticalPadding:    `8px`,
-                horizontalPadding:  `18px`,
+                horizontalPadding:  `20px`,
                 borderRadius:       `10px`,
                 fontSize:           `1.5rem`
             }

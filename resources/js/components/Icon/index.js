@@ -34,13 +34,12 @@ export default class Icon extends Component {
     getColor() {
 
         if (this.props.color) {
-
             return (this.props.color.indexOf('#') === 0)
                 ? this.props.color
                 : styles.color.get(this.props.color)
         }
 
-        return styles.color.textDisabled
+        return styles.color.textDisabled()
     }
 
 

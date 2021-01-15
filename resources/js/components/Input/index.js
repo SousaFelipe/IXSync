@@ -50,7 +50,7 @@ export default class Input extends Component {
 
                 fontSize={ dimension.fontSize }
 
-                background={ styles.color.background } />
+                background={ styles.color.background() } />
         )
     }
 }
