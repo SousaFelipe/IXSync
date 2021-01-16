@@ -23,8 +23,8 @@ const ContentStyle = styled.div `
     flex-grow:          ${ props => props.grow ? props.grow : 0 };
     flex-shrink:        ${ props => props.shrink ? props.shrink : 1 };
     flex-basis:         ${ props => props.basis ? props.basis : `auto` };
-
     background-color:   ${ props => props.background ? props.background : `white` };
+    text-align:         ${ props => props.textAlign ? props.textAlign : `left` }
 
 
     @media(min-width: 1025px) { width: ${ props => props.responsive ? props.responsive.all.width ? props.responsive.all.width : `auto` : `auto` }; }

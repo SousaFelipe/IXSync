@@ -37057,6 +37057,18 @@ var Content = /*#__PURE__*/function (_Component) {
   }
 
   _createClass(Content, [{
+    key: "renderChildrens",
+    value: function renderChildrens() {
+      var _this = this;
+
+      var children = this.props.children;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.Children.map(children, function (child) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.cloneElement(child, {
+          textAlign: _this.props.textAlign ? _this.props.textAlign : 'start'
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var dimension = _utils__WEBPACK_IMPORTED_MODULE_2__["default"].component.dimensions(this.props);
@@ -38052,12 +38064,8 @@ var Caixa = /*#__PURE__*/function (_React$Component) {
         grow: 1
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Container__WEBPACK_IMPORTED_MODULE_6__["default"], {
         height: "100%",
-        align: "right"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Content__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        basic: true
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_P__WEBPACK_IMPORTED_MODULE_10__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.auth.user.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_P__WEBPACK_IMPORTED_MODULE_10__["default"], null, _models_User__WEBPACK_IMPORTED_MODULE_4__["default"].getPosition(this.state.auth.user.access))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Content__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        basic: true
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Content__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        justify: "end"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Content__WEBPACK_IMPORTED_MODULE_7__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_P__WEBPACK_IMPORTED_MODULE_10__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.auth.user.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_P__WEBPACK_IMPORTED_MODULE_10__["default"], null, _models_User__WEBPACK_IMPORTED_MODULE_4__["default"].getPosition(this.state.auth.user.access))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Content__WEBPACK_IMPORTED_MODULE_7__["default"], null))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Content__WEBPACK_IMPORTED_MODULE_7__["default"], {
         height: "80px"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Content__WEBPACK_IMPORTED_MODULE_7__["default"], {
         grow: 1

@@ -18,6 +18,16 @@ export default class Content extends Component {
 
 
 
+    renderChildrens() {
+        const { children } = this.props
+
+        return React.Children.map(children, child => React.cloneElement(child, {
+            textAlign: this.props.textAlign ? this.props.textAlign : 'left'
+        }))
+    }
+
+
+
     render() {
 
         const dimension = utils.component.dimensions(this.props)
@@ -31,9 +41,10 @@ export default class Content extends Component {
                 grow={ this.props.grow }
                 shrink={ this.props.shrink }
                 basis={ this.props.basis }
-                background={ this.props.background }>
+                background={ this.props.background }
+                textAlign={ this.props.textAlign }>
 
-                { this.props.children }
+                { this.renderChildrens() }
 
             </ContentStyle>
         )

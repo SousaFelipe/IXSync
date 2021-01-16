@@ -156,12 +156,12 @@ export default class Caixa extends React.Component {
                         </Content>
 
                         <Content grow={1}>
-                            <Container height='100%' align='right'>
-                                <Content basic>
+                            <Container height='100%' justify='end'>
+                                <Content textAlign='right'>
                                     <P><strong>{ this.state.auth.user.name }</strong></P>
                                     <P>{ User.getPosition(this.state.auth.user.access) }</P>
                                 </Content>
-                                <Content basic>
+                                <Content >
                                     { /*<Image src={ utils.asset.avatar(this.state.auth.user.code) } size='mini' verticalAlign='middle' circular/> */}
                                 </Content>
                             </Container>
