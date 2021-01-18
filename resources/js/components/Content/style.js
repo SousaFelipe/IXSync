@@ -23,7 +23,7 @@ const ContentStyle = styled.div `
     flex-grow:          ${ props => props.grow ? props.grow : 0 };
     flex-shrink:        ${ props => props.shrink ? props.shrink : 1 };
     flex-basis:         ${ props => props.basis ? props.basis : `auto` };
-    background-color:   ${ props => props.background ? props.background : `white` };
+    background:         ${ props => props.background ? props.background : `white` };
     text-align:         ${ props => props.textAlign ? props.textAlign : `left` }
 
 

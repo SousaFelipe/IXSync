@@ -1,9 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500;700;800;900&display=swap');
 
 
 
 *, body, html {
-    font-family:     'M PLUS Rounded 1c', sans-serif;
+    font-family:     'Roboto', sans-serif;
     -moz-box-sizing: border-box;
     box-sizing:      border-box;
     padding:         0;

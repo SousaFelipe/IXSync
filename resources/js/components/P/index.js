@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 
 
-import styles from '../../styles'
-
-
 
 import PStyle from './style'
+
+
+import styles from '../../styles'
+import fonts from '../../styles/fonts'
+
 
 
 
@@ -33,8 +35,9 @@ export default class P extends Component {
         return (
             <PStyle
                 color={ this.getColor() }
+                font={ (this.props.font != undefined) ? fonts(this.props.font) : false }
                 fontSize={ this.props.fontSize || `1rem` }
-                fontWeight={ this.props.fontWeight || 600 } >
+                fontWeight={ this.props.fontWeight || 400 }>
 
                 { this.props.children }
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Inertia } from '@inertiajs/inertia'
 
 
@@ -18,7 +18,7 @@ import P from '../../components/P'
 
 
 
-export default class Caixa extends React.Component {
+export default class Caixa extends Component {
 
 
     constructor(props) {
@@ -158,7 +158,7 @@ export default class Caixa extends React.Component {
                         <Content grow={1}>
                             <Container height='100%' justify='end'>
                                 <Content textAlign='right'>
-                                    <P><strong>{ this.state.auth.user.name }</strong></P>
+                                    <P fontWeight='700'>{ this.state.auth.user.name }</P>
                                     <P>{ User.getPosition(this.state.auth.user.access) }</P>
                                 </Content>
                                 <Content >
@@ -177,17 +177,20 @@ export default class Caixa extends React.Component {
 
                         <Content>
                             <Container width='100%' align='center'>
-                                <P fontWeight='900' fontSize='5rem' primary>IX</P><P fontSize='5rem'>Sync</P>
+                                <P font='MPSRounded' fontWeight='900' fontSize='5rem' primary>IX</P>
+                                <P font='MPSRounded' fontWeight='500' fontSize='5rem'>Sync</P>
                             </Container>
                         </Content>
 
                         <Content >
-
                             <Input size='large' placeholder='CPF ou nome do cliente...' />
-
                         </Content>
 
                     </Container>
+                </Content>
+
+                <Content height='50px' background='background'>
+
                 </Content>
 
             </Container>

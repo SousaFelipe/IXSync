@@ -5,6 +5,7 @@ import React, { Component } from 'react'
 import ContentStyle from './style'
 
 import utils from '../../utils'
+import styles from '../../styles'
 
 
 
@@ -28,6 +29,20 @@ export default class Content extends Component {
 
 
 
+    getBackground() {
+
+        if (this.props.background) {
+
+            return (this.props.background.indexOf('#') === 0)
+                ? this.props.background
+                : styles.color.get(this.props.background)
+        }
+
+        return `none`
+    }
+
+
+
     render() {
 
         const dimension = utils.component.dimensions(this.props)
@@ -41,7 +56,7 @@ export default class Content extends Component {
                 grow={ this.props.grow }
                 shrink={ this.props.shrink }
                 basis={ this.props.basis }
-                background={ this.props.background }
+                background={ this.getBackground() }
                 textAlign={ this.props.textAlign }>
 
                 { this.renderChildrens() }
