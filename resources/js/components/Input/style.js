@@ -6,6 +6,10 @@ import styles from '../../styles'
 
 
 
+const findProps = (prop, find) => RegExp(`\\b${ find }\\b`).test(prop)
+
+
+
 const InputStyle = styled.input `
     width:          ${ props => props.width };
     height:         ${ props => props.height };
@@ -25,8 +29,9 @@ const InputStyle = styled.input `
 
     &:focus {
         outline:        none !important;
+        border:         ${ props => findProps(props.focus, 'border') ? `1px solid ${ styles.color.border() }` : `none` };
+        box-shadow:     ${ props => findProps(props.focus, 'shadow') ? `1px 1px 8px rgba(0, 0, 0, 0.246);` : `none` };
         background:     #FFFFFF;
-        box-shadow:     1px 1px 8px rgba(0, 0, 0, 0.246);
     }
 
     &::placeholder {

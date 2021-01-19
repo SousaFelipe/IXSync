@@ -38,19 +38,18 @@ export default class Input extends Component {
 
         return (
             <InputStyle
-
                 type={ this.props.type || `text` }
                 placeholder={ this.props.placeholder }
-
                 width={ this.getWidth() }
                 height={ dimension.height }
                 paddingH={ dimension.padding.horizontal }
                 paddingV={ dimension.padding.vertical }
                 borderRadius={ dimension.borderRadius }
-
+                background={ (this.props.background == 'none') ? 'none' : styles.color.background() }
                 fontSize={ dimension.fontSize }
+                focus={ this.props.focus }
 
-                background={ styles.color.background() } />
+                onFocus={ this.props.onFocus } />
         )
     }
 }

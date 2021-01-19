@@ -18,16 +18,6 @@ export default class Container extends Component {
 
 
 
-    renderChildrens() {
-        const { children } = this.props
-
-        return React.Children.map(children, child => React.cloneElement(child, {
-            aligned: (this.props.align != null && this.props.align != undefined),
-        }))
-    }
-
-
-
     getFluidPandding(pandded) {
 
         const padding = {
@@ -43,6 +33,16 @@ export default class Container extends Component {
 
 
 
+    renderChildrens() {
+        const { children } = this.props
+
+        return React.Children.map(children, child => React.cloneElement(child, {
+            aligned: (this.props.align != null && this.props.align != undefined),
+        }))
+    }
+
+
+
     render() {
 
         return (
@@ -50,6 +50,7 @@ export default class Container extends Component {
                 width={ utils.component.dimensions(this.props).w }
                 height={ utils.component.dimensions(this.props).h }
                 pandded={ this.getFluidPandding(this.props.pandded) }
+                rounded={ this.props.rounded != undefined }
                 direction={ utils.component.direction(this.props) }
                 reverse={ this.props.reverse }
                 justify={ utils.component.justify(this.props) }

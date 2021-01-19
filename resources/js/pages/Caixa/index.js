@@ -13,8 +13,9 @@ import Button from '../../components/Button'
 import Container from '../../components/Container'
 import Content from '../../components/Content'
 import Icon from '../../components/Icon'
-import Input from '../../components/Input'
+import Image from '../../components/Image'
 import P from '../../components/P'
+import Search from '../../components/Search'
 
 
 
@@ -156,13 +157,13 @@ export default class Caixa extends Component {
                         </Content>
 
                         <Content grow={1}>
-                            <Container height='100%' justify='end'>
-                                <Content textAlign='right'>
+                            <Container height='100%' justify='end' align='center'>
+                                <Content textAlign='right' away='horizontally'>
                                     <P fontWeight='700'>{ this.state.auth.user.name }</P>
                                     <P>{ User.getPosition(this.state.auth.user.access) }</P>
                                 </Content>
-                                <Content >
-                                    { /*<Image src={ utils.asset.avatar(this.state.auth.user.code) } size='mini' verticalAlign='middle' circular/> */}
+                                <Content>
+                                    <Image src={ this.state.auth.user.code } size={48} type='avatar' rounded/>
                                 </Content>
                             </Container>
                         </Content>
@@ -170,7 +171,7 @@ export default class Caixa extends Component {
                     </Container>
                 </Content>
 
-                <Content height='80px' />
+                <Content height='10%'/>
 
                 <Content grow={1}>
                     <Container height='100%' direction='column' align='center'>
@@ -183,13 +184,13 @@ export default class Caixa extends Component {
                         </Content>
 
                         <Content >
-                            <Input size='large' placeholder='CPF ou nome do cliente...' />
+                            <Search size='large' placeholder='CPF ou nome do cliente...' focus='shadow' />
                         </Content>
 
                     </Container>
                 </Content>
 
-                <Content height='50px' background='background'>
+                <Content height='50px' background='background' bordered='top'>
 
                 </Content>
 

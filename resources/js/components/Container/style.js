@@ -2,7 +2,11 @@ import styled from 'styled-components'
 
 
 
-const ContainerStyle = styled.section `
+import Component from '../Component'
+
+
+
+const ContainerStyle = styled(Component) `
     display:            flex;
     width:              ${ props => props.width };
     height:             ${ props => props.height };
@@ -12,7 +16,7 @@ const ContainerStyle = styled.section `
     flex-wrap:          ${ props => props.wrap ? props.wrap : `no-wrap` };
     justify-content:    ${ props => props.justify };
     align-items:        ${ props => props.align };
-    background-color:   ${ props => props.background ? props.background : `white` };
+    background:         ${ props => props.background ? props.background : `white` };
 `
 
 

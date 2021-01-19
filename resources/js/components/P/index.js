@@ -37,7 +37,8 @@ export default class P extends Component {
                 color={ this.getColor() }
                 font={ (this.props.font != undefined) ? fonts(this.props.font) : false }
                 fontSize={ this.props.fontSize || `1rem` }
-                fontWeight={ this.props.fontWeight || 400 }>
+                fontWeight={ this.props.fontWeight || 400 }
+                textAlign={ this.props.textAlign }>
 
                 { this.props.children }
 

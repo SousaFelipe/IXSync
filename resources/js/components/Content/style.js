@@ -2,15 +2,11 @@ import styled from 'styled-components'
 
 
 
-/**
-    ${props => {
-        return props.responsive ? `` : `width: ${ props.width ? props.width : `auto` };`
-    }}
- */
+import Component from '../Component'
 
 
 
-const ContentStyle = styled.div `
+const ContentStyle = styled(Component) `
 
     ${props => {
         return props.responsive ? `` : `width: ${ props.width ? props.width : `auto` };`

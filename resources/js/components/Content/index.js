@@ -19,26 +19,25 @@ export default class Content extends Component {
 
 
 
+    getBackground() {
+
+        if (this.props.background) {
+            return (this.props.background.indexOf('#') === 0)
+                ? this.props.background
+                : styles.color.get(this.props.background)
+        }
+
+        return `white`
+    }
+
+
+
     renderChildrens() {
         const { children } = this.props
 
         return React.Children.map(children, child => React.cloneElement(child, {
             textAlign: this.props.textAlign ? this.props.textAlign : 'left'
         }))
-    }
-
-
-
-    getBackground() {
-
-        if (this.props.background) {
-
-            return (this.props.background.indexOf('#') === 0)
-                ? this.props.background
-                : styles.color.get(this.props.background)
-        }
-
-        return `none`
     }
 
 
@@ -51,6 +50,8 @@ export default class Content extends Component {
             <ContentStyle
                 responsive={ this.props.responsive }
                 aligned={ this.props.aligned }
+                bordered={ this.props.bordered }
+                away={ this.props.away }
                 width={ dimension.w }
                 height={ dimension.h }
                 grow={ this.props.grow }

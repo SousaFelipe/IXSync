@@ -1,45 +1,30 @@
 import styled from 'styled-components'
 
 
+import styles from '../../styles'
+
+
+
+const filterProps = (props, def) => (props == 'all' || props == def)
+
+const border = `1px solid ${ styles.color.border() }`
+
+
 
 const Component = styled.div `
 
-    ${props => {
+    ${ props => props.rounded ? `border-radius: 50%;` : `` }
 
-        if (props.bordered != undefined) {
+    margin-top:     ${ props => filterProps(props.away, 'vertically') ? `1em` : `0` };
+    margin-bottom:  ${ props => filterProps(props.away, 'vertically') ? `1em` : `0` };
+    margin-left:    ${ props => filterProps(props.away, 'horizontally') ? `1em` : `0` };
+    margin-right:   ${ props => filterProps(props.away, 'horizontally') ? `1em` : `0` };
 
-            if (props.bordered == 'all') {
+    border-top:     ${ props => filterProps(props.bordered, 'top')      ? border : `none` };
+    border-bottom:  ${ props => filterProps(props.bordered, 'bottom')   ? border : `none` };
+    border-left:    ${ props => filterProps(props.bordered, 'left')     ? border : `none` };
+    border-right:   ${ props => filterProps(props.bordered, 'right')    ? border : `none` };
 
-            }
-
-
-        }
-
-    }}
-
-    border-left: ${props =>
-        props.bordered
-            ? props.border.left
-            : `none`
-    };
-
-    border-right: ${props =>
-        props.bordered
-            ? props.border.right
-            : `none`
-    };
-
-    border-top: ${props =>
-        props.bordered
-            ? props.border.top
-            : `none`
-    };
-
-    border-bottom: ${props =>
-        props.bordered
-            ? props.border.bottom
-            : `none`
-    };
 `
 
 

@@ -11,19 +11,16 @@ function dimensions(size) {
 
         'small':    () => {
             return {
-
             }
         },
 
         'medium':   () => {
             return {
-
             }
         },
 
         'large':    () => {
             return {
-
             }
         }
     }
