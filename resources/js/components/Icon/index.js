@@ -30,25 +30,11 @@ export default class Icon extends Component {
     }
 
 
-
-    getColor() {
-
-        if (this.props.color) {
-            return (this.props.color.indexOf('#') === 0)
-                ? this.props.color
-                : styles.color.get(this.props.color)
-        }
-
-        return styles.color.textDisabled()
-    }
-
-
-
     render() {
 
         return (
             <IconStyle width={ this.getSize() } height={ this.getSize() } padding={ this.state.dimensions.padding } >
-                <Svg name={ this.props.name } size={ this.props.size } color={ this.getColor() } />
+                <Svg name={ this.props.name } size={ this.props.size } color={ styles.color.filter(this.props.color, 1, styles.color.textDisabled()) } />
             </IconStyle>
         )
     }

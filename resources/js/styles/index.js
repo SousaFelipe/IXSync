@@ -27,7 +27,6 @@ const color = {
 
 
     /**
-     *
      * @param {string}  color       Color name for background component
      * @param {boolean} inverted    Color inverted for foreground component
      */
@@ -62,6 +61,26 @@ const color = {
         return inverted
             ? (invertedColors[color] || invertedColors['primary'])(alpha)
             : (colors[color] || colors['textDisabled'])(alpha)
+    },
+
+
+
+    /**
+     * @param {string}  color   The color do paint element
+     * @param {number}  alpha   Alpha scale of color
+     * @param {string}  def     Default color for use when color is undefined
+     */
+    filter: function (color, alpha = 1, def = 'white') {
+
+            if (color) {
+                return (
+                    ((color.indexOf('#') === 0) || (color.indexOf('rgba(') === 0))
+                        ? color
+                        : this.get(color, false, alpha)
+                )
+            }
+
+            return def
     }
 
 }

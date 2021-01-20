@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import styles from '../../styles'
 
 
 
@@ -25,11 +24,14 @@ export default class Search extends Component {
             <Container
                 width={ this.props.width }
                 height={ this.props.height }
-                direction='column'
                 justify={ this.props.justify }
                 align={ this.props.align }
-                background={ styles.color.background() }
-                focus={ this.props.focus } >
+                focus={ this.props.focus }
+                focusWithin='fill|shadow'
+                background='background'
+                direction='column'
+                pandded='small'
+                rounded={ this.props.rounded }>
 
                 <Content grow={1}>
                     <Container width='100%' align='center'>
@@ -37,10 +39,7 @@ export default class Search extends Component {
                             <Icon name='search' size='small'/>
                         </Content>
                         <Content grow={1}>
-                            <Input
-                                size={ this.props.size }
-                                placeholder={ this.props.placeholder }
-                                background='none' />
+                            <Input size={ this.props.size } placeholder={ this.props.placeholder } onChange={ this.props.onChange } />
                         </Content>
                     </Container>
                 </Content>

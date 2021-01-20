@@ -19,19 +19,6 @@ export default class Content extends Component {
 
 
 
-    getBackground() {
-
-        if (this.props.background) {
-            return (this.props.background.indexOf('#') === 0)
-                ? this.props.background
-                : styles.color.get(this.props.background)
-        }
-
-        return `white`
-    }
-
-
-
     renderChildrens() {
         const { children } = this.props
 
@@ -48,6 +35,7 @@ export default class Content extends Component {
 
         return (
             <ContentStyle
+                key={ this.props.key }
                 responsive={ this.props.responsive }
                 aligned={ this.props.aligned }
                 bordered={ this.props.bordered }
@@ -57,8 +45,12 @@ export default class Content extends Component {
                 grow={ this.props.grow }
                 shrink={ this.props.shrink }
                 basis={ this.props.basis }
-                background={ this.getBackground() }
-                textAlign={ this.props.textAlign }>
+                background={ styles.color.filter(this.props.background, 1, 'none') }
+                hoverColor={ styles.color.filter(this.props.hoverColor, 1, `none`) }
+                textAlign={ this.props.textAlign }
+                fontSize={ this.props.fontSize }
+
+                onClick={ this.props.onClick }>
 
                 { this.renderChildrens() }
 

@@ -10,12 +10,16 @@ import User from '../../models/User'
 
 
 import Button from '../../components/Button'
+import Column from '../../components/Grid/Column'
 import Container from '../../components/Container'
 import Content from '../../components/Content'
+import Grid from '../../components/Grid'
 import Icon from '../../components/Icon'
 import Image from '../../components/Image'
+import LI from '../../components/LI'
 import P from '../../components/P'
 import Search from '../../components/Search'
+import UL from '../../components/UL'
 
 
 
@@ -105,22 +109,23 @@ export default class Caixa extends Component {
         }
 
         return (
-            <></>
-            /*<LI
+            <Content
                 key={ cliente.id }
-                onClick={ selectClientItem }
-                hoverColor='#EEE'>
+                width='100%'
+                hoverColor='background'
+                fontSize={0.8}
+                onClick={ selectClientItem }>
 
                 <Grid>
                     <Column>
-                        <Icon name='user' color={ cliente.ativo == 'S' ? 'green' : 'grey' }/>
+                        <Icon name='user' color={ cliente.ativo == 'S' ? 'success' : 'textDisabled' }/>
                     </Column>
                     <Column width={4} overflow={true}>{ cliente.razao.toUpperCase() }</Column>
                     <Column width={2} overflow={true}>{ cliente.endereco.toUpperCase() }</Column>
                     <Column width={6} overflow={true}>{ cliente.complemento.toUpperCase() }</Column>
                 </Grid>
 
-            </LI>*/
+            </Content>
         )
     }
 
@@ -129,10 +134,9 @@ export default class Caixa extends Component {
     showMatchClients(clientes) {
         if (clientes.length > 0) {
             return (
-                <></>
-                //<Segment clearing>
-                //    <UL>{ clientes.map(this.createClientElement) }</UL>
-                //</Segment>
+                <Container width='100%' direction='column' align='stretch'>
+                    { clientes.map(this.createClientElement) }
+                </Container>
             )
         }
     }
@@ -144,8 +148,8 @@ export default class Caixa extends Component {
             <Container
                 dimensions='full'
                 direction='column'
-                background='#EEE'
-                align='strech'>
+                align='strech'
+                background='#FFF'>
 
                 <Content height='100px'>
                     <Container height='100%' align='center' pandded='large'>
@@ -184,7 +188,17 @@ export default class Caixa extends Component {
                         </Content>
 
                         <Content >
-                            <Search size='large' placeholder='CPF ou nome do cliente...' focus='shadow' />
+                            <Search
+                                size='large'
+                                placeholder='CPF ou nome do cliente...'
+                                focus='fill|shadow|border'
+                                padding='horizontally'
+                                onChange={ this.onSearhChange }
+                                rounded={ 28 }>
+
+                                { this.showMatchClients(this.state.clientes) }
+
+                            </Search>
                         </Content>
 
                     </Container>
@@ -199,60 +213,10 @@ export default class Caixa extends Component {
     }
 }
 
-/**
+/*
+
 <Form onSubmit={ this.doLogout }>
     <Button type='subbmit' negative fluid>Sair</Button>
 </Form>
-
-<Image src={ utils.asset.avatar('2dPsQxPM.png') } size='mini' verticalAlign='middle'/>
-
-<FlexContent responsive={ style.mainLogo }>
-    <Segment clearing basic padded>
-        <Image src={ utils.asset.image(`banners/IXSync.png`) } size='large' />
-    </Segment>
-</FlexContent>
-
-<FlexContent height='100px' >
-    <FlexContainer height='100%' align='center'>
-
-        <FlexContent grow={1}>
-            <Segment padded={true} floated='left' compact basic>
-                <Button icon='sidebar' />
-            </Segment>
-        </FlexContent>
-
-        <FlexContent grow={1}>
-            <Segment as={Segment.Group} textAlign='right' floated='right' size='small' horizontal basic>
-                <Segment basic>
-                    <List.Item floated='right'><strong>{ this.state.auth.user.name }</strong></List.Item>
-                    <List.Item floated='right'>{ User.getPosition(this.state.auth.user.access) }</List.Item>
-                </Segment>
-                <Segment basic>
-                    <Image src={ utils.asset.avatar(this.state.auth.user.code) } size='mini' verticalAlign='middle' circular/>
-                </Segment>
-            </Segment>
-        </FlexContent>
-
-    </FlexContainer>
-</FlexContent>
-
-<FlexContent responsive={ style.mainInputSearch }>
-
-    <Segment clearing>
-        <Input
-            type='search'
-            icon='search'
-            size='huge'
-            iconPosition='left'
-            placeholder='Nome ou CPF do cliente...'
-            floated='left'
-            onChange={ this.onSearhChange }
-            transparent
-            fluid />
-    </Segment>
-
-    { this.showMatchClients(this.state.clientes) }
-
-</FlexContent>
 
 */

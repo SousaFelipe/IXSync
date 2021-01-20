@@ -45,11 +45,10 @@ export default class Input extends Component {
                 paddingH={ dimension.padding.horizontal }
                 paddingV={ dimension.padding.vertical }
                 borderRadius={ dimension.borderRadius }
-                background={ (this.props.background == 'none') ? 'none' : styles.color.background() }
+                background={ styles.color.filter(this.props.background, 1, 'none') }
                 fontSize={ dimension.fontSize }
                 focus={ this.props.focus }
-
-                onFocus={ this.props.onFocus } />
+                onChange={ this.props.onChange } />
         )
     }
 }

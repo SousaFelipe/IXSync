@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import styles from '../../styles'
 
 
 
@@ -20,7 +21,8 @@ export default class LI extends Component {
         return (
             <LIstyle
                 onClick={ this.props.onClick }
-                hoverColor={ this.props.hoverColor }>
+                hoverColor={ styles.color.filter(this.props.hoverColor, 1, 'none') }
+                fontSize={ this.props.fontSize }>
 
                 { this.props.children }
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 
 
-import Colstyle from './style'
+import ColumnStyle from './style'
 
 
 
@@ -18,13 +18,14 @@ export default class Column extends Component {
 
     render() {
         return (
-            <Colstyle
+            <ColumnStyle
                 width={ this.props.width }
+                height={ this.props.height }
                 overflow={ `${ this.props.overflow }` }>
 
                 { this.props.children }
 
-            </Colstyle>
+            </ColumnStyle>
         )
     }
 }

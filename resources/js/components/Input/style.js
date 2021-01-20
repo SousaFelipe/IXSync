@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 
-
-
 import styles from '../../styles'
 
 
@@ -25,17 +23,17 @@ const InputStyle = styled.input `
     font-size:      ${ props => props.fontSize };
 
     background:     ${ props => props.background };
-    color:          ${ styles.color.textPrimary };
+    color:          ${ styles.color.textPrimary() };
 
     &:focus {
         outline:        none !important;
         border:         ${ props => findProps(props.focus, 'border') ? `1px solid ${ styles.color.border() }` : `none` };
         box-shadow:     ${ props => findProps(props.focus, 'shadow') ? `1px 1px 8px rgba(0, 0, 0, 0.246);` : `none` };
-        background:     #FFFFFF;
+        background:     ${ props => props.focus ? `white` : `none` };
     }
 
     &::placeholder {
-        color:      ${ styles.color.textDisabled };
+        color:      ${ styles.color.textDisabled() };
         opacity:    1;
     }
 `
