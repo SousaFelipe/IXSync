@@ -17,6 +17,16 @@ export default class LI extends Component {
 
 
 
+    renderChildrens() {
+        const { children } = this.props
+
+        return React.Children.map(children, child => React.cloneElement(child, {
+            fontSize: this.props.fontSize
+        }))
+    }
+
+
+
     render() {
         return (
             <LIstyle

@@ -109,23 +109,18 @@ export default class Caixa extends Component {
         }
 
         return (
-            <Content
+            <LI
                 key={ cliente.id }
                 width='100%'
                 hoverColor='background'
-                fontSize={0.8}
                 onClick={ selectClientItem }>
-
                 <Grid>
-                    <Column>
-                        <Icon name='user' color={ cliente.ativo == 'S' ? 'success' : 'textDisabled' }/>
-                    </Column>
-                    <Column width={4} overflow={true}>{ cliente.razao.toUpperCase() }</Column>
-                    <Column width={2} overflow={true}>{ cliente.endereco.toUpperCase() }</Column>
-                    <Column width={6} overflow={true}>{ cliente.complemento.toUpperCase() }</Column>
+                    <Column padding='small|left'> <Icon name='user' color={ cliente.ativo == 'S' ? 'success' : 'textDisabled' }/> </Column>
+                    <Column width={4} overflow={true}> <P fontSize='0.8rem'>{ cliente.razao.toUpperCase() }</P> </Column>
+                    <Column width={2} overflow={true}> <P fontSize='0.8rem'>{ cliente.endereco.toUpperCase() }</P> </Column>
+                    <Column padding='small|right' width={6} overflow={true}> <P fontSize='0.8rem'>{ cliente.complemento.toUpperCase() }</P> </Column>
                 </Grid>
-
-            </Content>
+            </LI>
         )
     }
 
@@ -134,9 +129,7 @@ export default class Caixa extends Component {
     showMatchClients(clientes) {
         if (clientes.length > 0) {
             return (
-                <Container width='100%' direction='column' align='stretch'>
-                    { clientes.map(this.createClientElement) }
-                </Container>
+                <UL>{ clientes.map(this.createClientElement) }</UL>
             )
         }
     }

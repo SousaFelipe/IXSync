@@ -36,7 +36,7 @@ export default class P extends Component {
             <PStyle
                 color={ this.getColor() }
                 font={ (this.props.font != undefined) ? fonts(this.props.font) : false }
-                fontSize={ this.props.fontSize || `1rem` }
+                fontSize={ this.props.fontSize }
                 fontWeight={ this.props.fontWeight || 400 }
                 textAlign={ this.props.textAlign }>
 

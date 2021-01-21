@@ -4,6 +4,8 @@ import styled from 'styled-components'
 
 import Component from '../Component'
 
+import styles from '../../styles'
+
 
 
 const ContentStyle = styled(Component) `
@@ -26,7 +28,7 @@ const ContentStyle = styled(Component) `
 
     &:hover {
         ${ props => props.hoverColor ? `cursor: pointer;` : `` }
-        background: ${ props => props.hoverColor ? props.hoverColor : props.background };
+        background: ${ props => props.hoverColor ? styles.color.filter(props.hoverColor, 1, `none`) : props.background };
     }
 
 

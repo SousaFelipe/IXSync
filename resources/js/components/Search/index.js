@@ -22,15 +22,17 @@ export default class Search extends Component {
     render() {
         return (
             <Container
-                width={ this.props.width }
-                height={ this.props.height }
-                justify={ this.props.justify }
-                align={ this.props.align }
-                focus={ this.props.focus }
+
                 focusWithin='fill|shadow'
                 background='background'
                 direction='column'
-                pandded='small'
+                align='stretch'
+
+                width={ this.props.width }
+                height={ this.props.height }
+                justify={ this.props.justify }
+                focus={ this.props.focus }
+
                 rounded={ this.props.rounded }>
 
                 <Content grow={1}>

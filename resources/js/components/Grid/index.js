@@ -64,6 +64,16 @@ export default class Grid extends Component {
 
 
 
+    renderChildrens() {
+        const { children } = this.props
+
+        return React.Children.map(children, child => React.cloneElement(child, {
+            fontSize: this.props.fontSize
+        }))
+    }
+
+
+
     render () {
 
         return (
@@ -71,7 +81,8 @@ export default class Grid extends Component {
                 columns={ this.getGridProperties() }
                 rows={ this.getGridRows() }
                 columnGap={ this.props.columnGap }
-                rowGap={ this.props.rowGap }>
+                rowGap={ this.props.rowGap }
+                fontSize={ this.props.fontSize }>
 
                 { this.props.children }
 

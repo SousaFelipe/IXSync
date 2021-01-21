@@ -9,8 +9,7 @@ const ULstyle = styled.ul `
     padding:            0;
 
     & > li {
-        display:        block;
-        line-height:    2rem;
+        display: block;
     }
 `
 

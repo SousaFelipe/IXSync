@@ -46,7 +46,7 @@ export default class Content extends Component {
                 shrink={ this.props.shrink }
                 basis={ this.props.basis }
                 background={ styles.color.filter(this.props.background, 1, 'none') }
-                hoverColor={ styles.color.filter(this.props.hoverColor, 1, `none`) }
+                hoverColor={ this.props.hoverColor }
                 textAlign={ this.props.textAlign }
                 fontSize={ this.props.fontSize }
 
