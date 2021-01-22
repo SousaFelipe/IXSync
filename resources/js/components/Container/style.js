@@ -4,6 +4,8 @@ import styled from 'styled-components'
 
 import Component from '../Component'
 
+import styles from '../../styles'
+
 
 
 const findProps = (prop, find) => RegExp(`\\b${ find }\\b`).test(prop)
@@ -22,6 +24,8 @@ const ContainerStyle = styled(Component) `
     justify-content:    ${ props => props.justify };
     align-items:        ${ props => props.align };
     background:         ${ props => props.background };
+    border:             ${ props => props.bordered ? `1px solid ${ styles.color.border() }` : `none` };
+    overflow:           hidden;
 
     &:focus-within {
         transition:         0.33s;

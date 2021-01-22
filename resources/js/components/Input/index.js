@@ -42,8 +42,7 @@ export default class Input extends Component {
                 placeholder={ this.props.placeholder }
                 width={ this.getWidth() }
                 height={ dimension.height }
-                paddingH={ dimension.padding.horizontal }
-                paddingV={ dimension.padding.vertical }
+                padding={ this.props.padding || '0' }
                 borderRadius={ dimension.borderRadius }
                 background={ styles.color.filter(this.props.background, 1, 'none') }
                 fontSize={ dimension.fontSize }

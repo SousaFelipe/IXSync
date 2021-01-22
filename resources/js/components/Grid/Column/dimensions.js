@@ -1,7 +1,6 @@
 
 
 
-
 function dimensions(size) {
 
     const sizes = {
@@ -9,7 +8,6 @@ function dimensions(size) {
         'medium':   () => `12px`,
         'large':    () => `16px`
     }
-
 
     return (sizes[size] || sizes['small'])()
 }

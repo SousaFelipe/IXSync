@@ -115,10 +115,10 @@ export default class Caixa extends Component {
                 hoverColor='background'
                 onClick={ selectClientItem }>
                 <Grid>
-                    <Column padding='small|left'> <Icon name='user' color={ cliente.ativo == 'S' ? 'success' : 'textDisabled' }/> </Column>
+                    <Column padding='left'> <Icon name='user' color={ cliente.ativo == 'S' ? 'success' : 'textDisabled' }/> </Column>
                     <Column width={4} overflow={true}> <P fontSize='0.8rem'>{ cliente.razao.toUpperCase() }</P> </Column>
                     <Column width={2} overflow={true}> <P fontSize='0.8rem'>{ cliente.endereco.toUpperCase() }</P> </Column>
-                    <Column padding='small|right' width={6} overflow={true}> <P fontSize='0.8rem'>{ cliente.complemento.toUpperCase() }</P> </Column>
+                    <Column padding='right' width={6} overflow={true}> <P fontSize='0.8rem'>{ cliente.complemento.toUpperCase() }</P> </Column>
                 </Grid>
             </LI>
         )
@@ -128,9 +128,7 @@ export default class Caixa extends Component {
 
     showMatchClients(clientes) {
         if (clientes.length > 0) {
-            return (
-                <UL>{ clientes.map(this.createClientElement) }</UL>
-            )
+            return <UL>{ clientes.map(this.createClientElement) }</UL>
         }
     }
 
@@ -187,7 +185,8 @@ export default class Caixa extends Component {
                                 focus='fill|shadow|border'
                                 padding='horizontally'
                                 onChange={ this.onSearhChange }
-                                rounded={ 28 }>
+                                rounded={ 28 }
+                                bordered={true}>
 
                                 { this.showMatchClients(this.state.clientes) }
 

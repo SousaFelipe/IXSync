@@ -22,11 +22,11 @@ export default class Container extends Component {
     getFluidPandding(pandded) {
 
         const padding = {
-            'thin':     () => `16px`,
-            'small':    () => `20px`,
-            'medium':   () => `30px`,
-            'large':    () => `40px`,
-            'xlarge':   () => `50px`,
+            'thin':     () => `8px`,
+            'small':    () => `16px`,
+            'medium':   () => `20px`,
+            'large':    () => `30px`,
+            'xlarge':   () => `40px`,
             'default':  () => '0'
         }
 
@@ -36,9 +36,7 @@ export default class Container extends Component {
 
 
     renderChildrens() {
-        const { children } = this.props
-
-        return React.Children.map(children, child => React.cloneElement(child, {
+        return React.Children.map(this.props.children, child => React.cloneElement(child, {
             aligned: (this.props.align != null && this.props.align != undefined),
         }))
     }
@@ -52,7 +50,7 @@ export default class Container extends Component {
                 height={ utils.component.dimensions(this.props).h }
                 pandded={ this.getFluidPandding(this.props.pandded) }
                 rounded={ this.props.rounded }
-                focus={ this.props.focus }
+                bordered={ this.props.bordered }
                 focusWithin={ this.props.focusWithin }
                 direction={ utils.component.direction(this.props) }
                 reverse={ this.props.reverse }

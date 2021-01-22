@@ -9,19 +9,13 @@ const findProps = (prop, find) => RegExp(`\\b${ find }\\b`).test(prop)
 
 
 const InputStyle = styled.input `
+
     width:          ${ props => props.width };
     height:         ${ props => props.height };
-    border-radius:  ${ props => props.borderRadius };
-
-    padding-left:   ${ props => props.paddingH };
-    padding-right:  ${ props => props.paddingH };
-
-    padding-top:    ${ props => props.paddingV };
-    padding-bottom: ${ props => props.paddingV };
-
     border:         none;
+    border-radius:  ${ props => props.borderRadius };
+    padding:        ${ props => props.padding };
     font-size:      ${ props => props.fontSize };
-
     background:     ${ props => props.background };
     color:          ${ styles.color.textPrimary() };
 

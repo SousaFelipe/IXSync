@@ -20,7 +20,7 @@ export default class Column extends Component {
         return (
             <ColumnStyle
                 padding={ this.props.padding }
-                padded={ (this.props.padding != undefined) || this.props.padded }
+                padded={ this.props.padded || this.props.padding }
                 width={ this.props.width }
                 height={ this.props.height }
                 overflow={ `${ this.props.overflow }` }

@@ -19,16 +19,6 @@ export default class Content extends Component {
 
 
 
-    renderChildrens() {
-        const { children } = this.props
-
-        return React.Children.map(children, child => React.cloneElement(child, {
-            textAlign: this.props.textAlign ? this.props.textAlign : 'left'
-        }))
-    }
-
-
-
     render() {
 
         const dimension = utils.component.dimensions(this.props)
@@ -49,10 +39,9 @@ export default class Content extends Component {
                 hoverColor={ this.props.hoverColor }
                 textAlign={ this.props.textAlign }
                 fontSize={ this.props.fontSize }
-
                 onClick={ this.props.onClick }>
 
-                { this.renderChildrens() }
+                { this.props.children }
 
             </ContentStyle>
         )

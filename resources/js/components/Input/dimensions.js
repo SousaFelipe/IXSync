@@ -7,44 +7,28 @@ function dimensions(size) {
 
         'small': () => {
             return {
-
                 width:          `150px`,
                 height:         `28px`,
                 borderRadius:   `14px`,
-
-                padding: {
-                    horizontal: `14px`,
-                    vertical:   `8px`
-                }
+                fontSize:       `0.6rem`
             }
         },
 
         'medium': () => {
             return {
-
                 width:          `300px`,
                 height:         `46px`,
                 borderRadius:   `23px`,
-
-                padding: {
-                    horizontal: `16px`,
-                    vertical:   `10px`
-                }
+                fontSize:       `0.8rem`
             }
         },
 
         'large': () => {
             return {
-
                 width:          `700px`,
                 height:         `56px`,
                 borderRadius:   `28px`,
-                fontSize:       `1rem`,
-
-                padding: {
-                    horizontal: `26px`,
-                    vertical:   `14px`
-                }
+                fontSize:       `1rem`
             }
         }
     }
