@@ -23,6 +23,7 @@ const ContentStyle = styled(Component) `
     flex-basis:         ${ props => props.basis ? props.basis : `auto` };
     text-align:         ${ props => props.textAlign ? props.textAlign : `left` };
     font-size:          ${ props => props.fontSize ? `${ props.fontSize }rem` : `1rem` };
+    vertical-align:     ${ props => props.align ? props.align : 'start' };
     background:         ${ props => props.background };
 
 

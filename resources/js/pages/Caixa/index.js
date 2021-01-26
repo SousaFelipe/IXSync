@@ -17,6 +17,7 @@ import Grid from '../../components/Grid'
 import Icon from '../../components/Icon'
 import Image from '../../components/Image'
 import LI from '../../components/LI'
+import Modal from '../../components/Modal'
 import P from '../../components/P'
 import Search from '../../components/Search'
 import UL from '../../components/UL'
@@ -26,10 +27,13 @@ import UL from '../../components/UL'
 export default class Caixa extends Component {
 
 
+
     constructor(props) {
         super(props)
 
         this.state = {
+
+            hideModal: true,
 
             auth: {
                 user: { },
@@ -142,6 +146,10 @@ export default class Caixa extends Component {
                 align='strech'
                 background='#FFF'>
 
+
+                <Modal hidden={ this.state.hideModal }></Modal>
+
+
                 <Content height='100px'>
                     <Container height='100%' align='center' pandded='large'>
 
@@ -178,7 +186,7 @@ export default class Caixa extends Component {
                             </Container>
                         </Content>
 
-                        <Content >
+                        <Content align='middle' textAlign='center'>
                             <Search
                                 size='large'
                                 placeholder='CPF ou nome do cliente...'

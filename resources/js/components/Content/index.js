@@ -27,7 +27,6 @@ export default class Content extends Component {
             <ContentStyle
                 key={ this.props.key }
                 responsive={ this.props.responsive }
-                aligned={ this.props.aligned }
                 bordered={ this.props.bordered }
                 away={ this.props.away }
                 width={ dimension.w }
@@ -35,6 +34,7 @@ export default class Content extends Component {
                 grow={ this.props.grow }
                 shrink={ this.props.shrink }
                 basis={ this.props.basis }
+                align={ this.props.align }
                 background={ styles.color.filter(this.props.background, 1, 'none') }
                 hoverColor={ this.props.hoverColor }
                 textAlign={ this.props.textAlign }

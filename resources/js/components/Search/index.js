@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 
-import Button from '../Button'
+
 import Container from '../Container'
 import Content from '../Content'
 import Icon from '../Icon'
